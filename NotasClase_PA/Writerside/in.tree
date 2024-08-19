@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE instance-profile
+        SYSTEM "https://resources.jetbrains.com/writerside/1.0/product-profile.dtd">
+
+<instance-profile id="in"
+                 name="Instance Name"
+                 start-page="starter.md">
+
+    <toc-element topic="Ejercicio-Clasificacion.md"/>
+    <toc-element topic="Apuntadores-Complejos.md"/>
+    <toc-element topic="Ejemplo-Apuntadores-II.md"/>
+    <toc-element topic="Cadena-Caracteres.md"/>
+    <toc-element topic="Ejemplo-Cadenas.md"/>
+    <toc-element topic="Archivos-Binarios.md"/>
+    <toc-element topic="Ejemplo-Binario.md"/>
+    <toc-element topic="Archivos-de-Texto.md"/>
+    <toc-element topic="Ejemplo-Texto.md"/>
+    <toc-element topic="Estructuras.md"/>
+    <toc-element topic="Ejemplo-Registros.md"/>
+    <toc-element topic="Apuntadores-y-Memoria-Dinamica.md"/>
+    <toc-element topic="Arreglos-Dinamicos.md"/>
+    <toc-element topic="Ejercicio-Memoria.md"/>
+    <toc-element topic="starter.md"/>
+</instance-profile>
