@@ -1,0 +1,156 @@
+<!DOCTYPE html SYSTEM "about:legacy-compat">
+<html lang="en-US" data-preset="contrast" data-primary-color="#307FFF"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta charset="UTF-8"><meta name="robots" content="noindex"><meta name="built-on" content="2024-08-19T14:46:06.633748329"><title>Gesti&oacute;n Avanzada de Estudiantes en C++ Usando `structs` | Instance Name</title><script type="application/json" id="virtual-toc-data">[{"id":"enunciado-del-problema","level":0,"title":"Enunciado del Problema","anchor":"#enunciado-del-problema"},{"id":"c-digo-del-sistema-de-gesti-n-de-estudiantes","level":0,"title":"Código del Sistema de Gestión de Estudiantes","anchor":"#c-digo-del-sistema-de-gesti-n-de-estudiantes"},{"id":"explicaci-n-del-c-digo","level":0,"title":"Explicación del Código","anchor":"#explicaci-n-del-c-digo"},{"id":"conclusi-n-importancia-de-las-structs-en-c","level":0,"title":"Conclusión: Importancia de las structs en C++","anchor":"#conclusi-n-importancia-de-las-structs-en-c"}]</script><script type="application/json" id="topic-shortcuts"></script><link href="https://resources.jetbrains.com/writerside/apidoc/6.10.0-b408/app.css" rel="stylesheet"><meta name="msapplication-TileColor" content="#000000"><link rel="apple-touch-icon" sizes="180x180" href="https://jetbrains.com/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="https://jetbrains.com/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="https://jetbrains.com/favicon-16x16.png"><meta name="msapplication-TileImage" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-144x144.png"><meta name="msapplication-square70x70logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-70x70.png"><meta name="msapplication-square150x150logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-150x150.png"><meta name="msapplication-wide310x150logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-310x150.png"><meta name="msapplication-square310x310logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-310x310.png"><meta name="image" content=""><!-- Open Graph --><meta property="og:title" content="Gesti&oacute;n Avanzada de Estudiantes en C++ Usando `structs` | Instance Name"><meta property="og:description" content=""><meta property="og:image" content=""><meta property="og:site_name" content="Instance Name Help"><meta property="og:type" content="website"><meta property="og:locale" content="en_US"><meta property="og:url" content="writerside-documentation/ejemplo-registros.html"><!-- End Open Graph --><!-- Twitter Card --><meta name="twitter:card" content="summary_large_image"><meta name="twitter:site" content=""><meta name="twitter:title" content="Gesti&oacute;n Avanzada de Estudiantes en C++ Usando `structs` | Instance Name"><meta name="twitter:description" content=""><meta name="twitter:creator" content=""><meta name="twitter:image:src" content=""><!-- End Twitter Card --><!-- Schema.org WebPage --><script type="application/ld+json">{
+    "@context": "http://schema.org",
+    "@type": "WebPage",
+    "@id": "writerside-documentation/ejemplo-registros.html#webpage",
+    "url": "writerside-documentation/ejemplo-registros.html",
+    "name": "Gesti&oacute;n Avanzada de Estudiantes en C++ Usando `structs` | Instance Name",
+    "description": "",
+    "image": "",
+    "inLanguage":"en-US"
+}</script><!-- End Schema.org --><!-- Schema.org WebSite --><script type="application/ld+json">{
+    "@type": "WebSite",
+    "@id": "writerside-documentation/#website",
+    "url": "writerside-documentation/",
+    "name": "Instance Name Help"
+}</script><!-- End Schema.org --></head><body data-id="Ejemplo-Registros" data-main-title="Gestión Avanzada de Estudiantes en C++ Usando `structs`" data-article-props="{&quot;seeAlsoStyle&quot;:&quot;links&quot;}" data-template="article" data-breadcrumbs=""><div class="wrapper"><main class="panel _main"><header class="panel__header"><div class="container"><h3>Instance Name  Help</h3><div class="panel-trigger"></div></div></header><section class="panel__content"><div class="container"><article class="article" data-shortcut-switcher="inactive"><h1 data-toc="Ejemplo-Registros" id="Ejemplo-Registros.md">Gestión Avanzada de Estudiantes en C++ Usando `structs`</h1><section class="chapter"><h2 id="enunciado-del-problema" data-toc="enunciado-del-problema">Enunciado del Problema</h2><p id="ylsg2k_8">Se requiere desarrollar un sistema para gestionar estudiantes en una universidad. Este sistema debe permitir almacenar informaci&oacute;n sobre los estudiantes, como nombre, edad, fecha de ingreso y calificaciones. Adem&aacute;s, el sistema debe manejar tanto listas de estudiantes de tama&ntilde;o fijo como listas din&aacute;micas que pueden cambiar en tiempo de ejecuci&oacute;n.</p><p id="ylsg2k_9">El sistema debe implementar lo siguiente:</p><ol class="list _decimal" id="ylsg2k_10" type="1"><li class="list__item" id="ylsg2k_11"><p>Definir estructuras (<code class="code" id="ylsg2k_14">structs</code>) para almacenar la informaci&oacute;n b&aacute;sica de los estudiantes.</p></li><li class="list__item" id="ylsg2k_12"><p>Utilizar estas estructuras tanto en memoria est&aacute;tica (listas de tama&ntilde;o fijo) como en memoria din&aacute;mica (listas de tama&ntilde;o variable).</p></li><li class="list__item" id="ylsg2k_13"><p>Incluir funciones que permitan agregar y mostrar la informaci&oacute;n de los estudiantes utilizando punteros y el operador <code class="code" id="ylsg2k_15">-&gt;</code>.</p></li></ol></section><section class="chapter"><h2 id="c-digo-del-sistema-de-gesti-n-de-estudiantes" data-toc="c-digo-del-sistema-de-gesti-n-de-estudiantes">C&oacute;digo del Sistema de Gesti&oacute;n de Estudiantes</h2><div class="code-block" data-lang="none">
+#include &lt;iostream&gt;
+#include &lt;string&gt;
+#include &lt;vector&gt;
+
+// Estructura para almacenar la fecha de ingreso de un estudiante
+struct Fecha {
+    int dia;
+    int mes;
+    int anio;
+};
+
+// Estructura para almacenar la información del estudiante
+struct Estudiante {
+    std::string nombre;
+    int edad;
+    Fecha fechaIngreso;
+    std::vector&lt;int&gt; notas; // Uso dinámico para almacenar notas
+};
+
+// Función para mostrar la información de un estudiante mediante puntero
+void mostrarEstudiante(const Estudiante* estudiante) {
+    std::cout &lt;&lt; &quot;Nombre: &quot; &lt;&lt; estudiante-&gt;nombre &lt;&lt; std::endl;
+    std::cout &lt;&lt; &quot;Edad: &quot; &lt;&lt; estudiante-&gt;edad &lt;&lt; std::endl;
+    std::cout &lt;&lt; &quot;Fecha de Ingreso: &quot; &lt;&lt; estudiante-&gt;fechaIngreso.dia &lt;&lt; &quot;/&quot;
+              &lt;&lt; estudiante-&gt;fechaIngreso.mes &lt;&lt; &quot;/&quot;
+              &lt;&lt; estudiante-&gt;fechaIngreso.anio &lt;&lt; std::endl;
+    std::cout &lt;&lt; &quot;Notas: &quot;;
+    for (int nota : estudiante-&gt;notas) {
+        std::cout &lt;&lt; nota &lt;&lt; &quot; &quot;;
+    }
+    std::cout &lt;&lt; std::endl;
+}
+
+// Función para agregar una nota a un estudiante mediante puntero
+void agregarNota(Estudiante* estudiante, int nota) {
+    estudiante-&gt;notas.push_back(nota); // Acceso dinámico a las notas usando `-&gt;`
+}
+
+// Función para crear un estudiante y retornar un puntero
+Estudiante* crearEstudiante(std::string nombre, int edad, Fecha fechaIngreso) {
+    Estudiante* nuevoEstudiante = new Estudiante; // Memoria dinámica para el estudiante
+    nuevoEstudiante-&gt;nombre = nombre;
+    nuevoEstudiante-&gt;edad = edad;
+    nuevoEstudiante-&gt;fechaIngreso = fechaIngreso;
+    return nuevoEstudiante; // Retorna un puntero al estudiante
+}
+
+int main() {
+    // Uso Estático de `struct`
+    const int NUM_ESTUDIANTES = 3;
+    Estudiante estudiantesEstaticos[NUM_ESTUDIANTES] = {
+        {&quot;Juan Perez&quot;, 20, {1, 8, 2021}, {85, 90}},
+        {&quot;Maria Lopez&quot;, 22, {15, 1, 2020}, {78, 88, 92}},
+        {&quot;Carlos Ruiz&quot;, 19, {10, 7, 2022}, {91, 85, 89}}
+    };
+
+    std::cout &lt;&lt; &quot;Información de Estudiantes (Estático):&quot; &lt;&lt; std::endl;
+    for (int i = 0; i &lt; NUM_ESTUDIANTES; ++i) {
+        mostrarEstudiante(&amp;estudiantesEstaticos[i]); // Pasamos el puntero
+        std::cout &lt;&lt; &quot;-------------------&quot; &lt;&lt; std::endl;
+    }
+
+    // Uso Dinámico de `struct` con Punteros
+    std::vector&lt;Estudiante*&gt; estudiantesDinamicos;
+
+    estudiantesDinamicos.push_back(crearEstudiante(&quot;Ana Torres&quot;, 21, {5, 3, 2021}));
+    estudiantesDinamicos.push_back(crearEstudiante(&quot;Luis Martinez&quot;, 23, {12, 9, 2019}));
+
+    agregarNota(estudiantesDinamicos[0], 95); // Agregar nota usando puntero
+    agregarNota(estudiantesDinamicos[1], 88);
+    agregarNota(estudiantesDinamicos[1], 82);
+
+    std::cout &lt;&lt; &quot;\nInformación de Estudiantes (Dinámico con Punteros):&quot; &lt;&lt; std::endl;
+    for (Estudiante* estudiante : estudiantesDinamicos) {
+        mostrarEstudiante(estudiante); // Pasamos el puntero
+        std::cout &lt;&lt; &quot;-------------------&quot; &lt;&lt; std::endl;
+    }
+
+    // Liberar la memoria dinámica
+    for (Estudiante* estudiante : estudiantesDinamicos) {
+        delete estudiante; // Liberamos la memoria asignada dinámicamente
+    }
+
+    return 0;
+}
+</div></section><section class="chapter"><h2 id="explicaci-n-del-c-digo" data-toc="explicaci-n-del-c-digo">Explicaci&oacute;n del C&oacute;digo</h2><section class="chapter"><h3 id="definici-n-de-structs" data-toc="definici-n-de-structs">Definici&oacute;n de <code class="code" id="ylsg2k_27">structs</code></h3><div class="code-block" data-lang="none">
+struct Fecha {
+    int dia;
+    int mes;
+    int anio;
+};
+
+struct Estudiante {
+    std::string nombre;
+    int edad;
+    Fecha fechaIngreso;
+    std::vector&lt;int&gt; notas; // Uso dinámico para almacenar notas
+};
+</div><ul class="list _bullet" id="ylsg2k_26"><li class="list__item" id="ylsg2k_28"><p><span class="control" id="ylsg2k_30">Fecha</span>: Esta <code class="code" id="ylsg2k_31">struct</code> almacena la informaci&oacute;n de la fecha de ingreso del estudiante, utilizando tres enteros: d&iacute;a, mes y a&ntilde;o.</p></li><li class="list__item" id="ylsg2k_29"><p><span class="control" id="ylsg2k_32">Estudiante</span>: Esta <code class="code" id="ylsg2k_33">struct</code> almacena la informaci&oacute;n de un estudiante, incluyendo su nombre, edad, fecha de ingreso (usando la <code class="code" id="ylsg2k_34">struct</code> <code class="code" id="ylsg2k_35">Fecha</code>), y un <code class="code" id="ylsg2k_36">vector&lt;int&gt;</code> para almacenar las notas del estudiante de manera din&aacute;mica.</p></li></ul></section><section class="chapter"><h3 id="mostrar-informaci-n-de-un-estudiante" data-toc="mostrar-informaci-n-de-un-estudiante">Mostrar Informaci&oacute;n de un Estudiante</h3><div class="code-block" data-lang="none">
+void mostrarEstudiante(const Estudiante* estudiante) {
+    std::cout &lt;&lt; &quot;Nombre: &quot; &lt;&lt; estudiante-&gt;nombre &lt;&lt; std::endl;
+    std::cout &lt;&lt; &quot;Edad: &quot; &lt;&lt; estudiante-&gt;edad &lt;&lt; std::endl;
+    std::cout &lt;&lt; &quot;Fecha de Ingreso: &quot; &lt;&lt; estudiante-&gt;fechaIngreso.dia &lt;&lt; &quot;/&quot;
+              &lt;&lt; estudiante-&gt;fechaIngreso.mes &lt;&lt; &quot;/&quot;
+              &lt;&lt; estudiante-&gt;fechaIngreso.anio &lt;&lt; std::endl;
+    std::cout &lt;&lt; &quot;Notas: &quot;;
+    for (int nota : estudiante-&gt;notas) {
+        std::cout &lt;&lt; nota &lt;&lt; &quot; &quot;;
+    }
+    std::cout &lt;&lt; std::endl;
+}
+</div><ul class="list _bullet" id="ylsg2k_38"><li class="list__item" id="ylsg2k_39"><p><span class="control" id="ylsg2k_40">Funci&oacute;n <code class="code" id="ylsg2k_45">mostrarEstudiante</code></span>: Esta funci&oacute;n toma un puntero a una <code class="code" id="ylsg2k_41">struct</code> <code class="code" id="ylsg2k_42">Estudiante</code> y muestra la informaci&oacute;n del estudiante en la consola. Se utiliza el operador <code class="code" id="ylsg2k_43">-&gt;</code> para acceder a los miembros de la <code class="code" id="ylsg2k_44">struct</code> a trav&eacute;s del puntero.</p></li></ul></section><section class="chapter"><h3 id="agregar-nota-a-un-estudiante" data-toc="agregar-nota-a-un-estudiante">Agregar Nota a un Estudiante</h3><div class="code-block" data-lang="none">
+void agregarNota(Estudiante* estudiante, int nota) {
+    estudiante-&gt;notas.push_back(nota); // Acceso dinámico a las notas usando `-&gt;`
+}
+</div><ul class="list _bullet" id="ylsg2k_47"><li class="list__item" id="ylsg2k_48"><p><span class="control" id="ylsg2k_49">Funci&oacute;n <code class="code" id="ylsg2k_54">agregarNota</code></span>: Permite agregar una nota a un estudiante espec&iacute;fico utilizando un puntero a la <code class="code" id="ylsg2k_50">struct</code> <code class="code" id="ylsg2k_51">Estudiante</code>. Se accede a la lista de notas de manera din&aacute;mica utilizando <code class="code" id="ylsg2k_52">push_back</code> en el <code class="code" id="ylsg2k_53">vector</code>.</p></li></ul></section><section class="chapter"><h3 id="crear-un-estudiante-memoria-din-mica" data-toc="crear-un-estudiante-memoria-din-mica">Crear un Estudiante (Memoria Din&aacute;mica)</h3><div class="code-block" data-lang="none">
+Estudiante* crearEstudiante(std::string nombre, int edad, Fecha fechaIngreso) {
+    Estudiante* nuevoEstudiante = new Estudiante; // Memoria dinámica para el estudiante
+    nuevoEstudiante-&gt;nombre = nombre;
+    nuevoEstudiante-&gt;edad = edad;
+    nuevoEstudiante-&gt;fechaIngreso = fechaIngreso;
+    return nuevoEstudiante; // Retorna un puntero al estudiante
+}
+</div><ul class="list _bullet" id="ylsg2k_56"><li class="list__item" id="ylsg2k_57"><p><span class="control" id="ylsg2k_58">Funci&oacute;n <code class="code" id="ylsg2k_61">crearEstudiante</code></span>: Esta funci&oacute;n asigna memoria din&aacute;mica para un nuevo estudiante usando <code class="code" id="ylsg2k_59">new</code>. La funci&oacute;n inicializa los miembros del estudiante y devuelve un puntero a la <code class="code" id="ylsg2k_60">struct</code> creada.</p></li></ul></section><section class="chapter"><h3 id="uso-est-tico-de-struct" data-toc="uso-est-tico-de-struct">Uso Est&aacute;tico de <code class="code" id="ylsg2k_65">struct</code></h3><div class="code-block" data-lang="none">
+const int NUM_ESTUDIANTES = 3;
+Estudiante estudiantesEstaticos[NUM_ESTUDIANTES] = {
+    {&quot;Juan Perez&quot;, 20, {1, 8, 2021}, {85, 90}},
+    {&quot;Maria Lopez&quot;, 22, {15, 1, 2020}, {78, 88, 92}},
+    {&quot;Carlos Ruiz&quot;, 19, {10, 7, 2022}, {91, 85, 89}}
+};
+</div><ul class="list _bullet" id="ylsg2k_64"><li class="list__item" id="ylsg2k_66"><p><span class="control" id="ylsg2k_67">Arreglo Est&aacute;tico de <code class="code" id="ylsg2k_69">structs</code></span>: Aqu&iacute; se define un arreglo de <code class="code" id="ylsg2k_68">structs</code> de tama&ntilde;o fijo (3) para almacenar informaci&oacute;n sobre los estudiantes. La memoria para este arreglo se asigna de manera est&aacute;tica en el stack.</p></li></ul></section><section class="chapter"><h3 id="uso-din-mico-de-struct-con-punteros" data-toc="uso-din-mico-de-struct-con-punteros">Uso Din&aacute;mico de <code class="code" id="ylsg2k_73">struct</code> con Punteros</h3><div class="code-block" data-lang="none">
+std::vector&lt;Estudiante*&gt; estudiantesDinamicos;
+
+estudiantesDinamicos.push_back(crearEstudiante(&quot;Ana Torres&quot;, 21, {5, 3, 2021}));
+estudiantesDinamicos.push_back(crearEstudiante(&quot;Luis Martinez&quot;, 23, {12, 9, 2019}));
+</div><ul class="list _bullet" id="ylsg2k_72"><li class="list__item" id="ylsg2k_74"><p><span class="control" id="ylsg2k_75">Lista Din&aacute;mica de <code class="code" id="ylsg2k_78">structs</code></span>: Se utiliza un <code class="code" id="ylsg2k_76">vector</code> de punteros a <code class="code" id="ylsg2k_77">structs</code> para manejar din&aacute;micamente la lista de estudiantes. Esto permite que la lista crezca o disminuya en tiempo de ejecuci&oacute;n.</p></li></ul></section><section class="chapter"><h3 id="liberaci-n-de-memoria-din-mica" data-toc="liberaci-n-de-memoria-din-mica">Liberaci&oacute;n de Memoria Din&aacute;mica</h3><div class="code-block" data-lang="none">
+for (Estudiante* estudiante : estudiantesDinamicos) {
+    delete estudiante; // Liberamos la memoria asignada dinámicamente
+}
+</div><ul class="list _bullet" id="ylsg2k_80"><li class="list__item" id="ylsg2k_82"><p><span class="control" id="ylsg2k_83">Liberaci&oacute;n de Memoria</span>: Es importante liberar la memoria asignada din&aacute;micamente con <code class="code" id="ylsg2k_84">delete</code> para evitar fugas de memoria. Esto se hace recorriendo todos los pun</p></li></ul><p id="ylsg2k_81">teros en el vector y llamando a <code class="code" id="ylsg2k_85">delete</code> para cada uno.</p></section></section><section class="chapter"><h2 id="conclusi-n-importancia-de-las-structs-en-c" data-toc="conclusi-n-importancia-de-las-structs-en-c">Conclusi&oacute;n: Importancia de las <code class="code" id="ylsg2k_88">structs</code> en C++</h2><p id="ylsg2k_87">Las <code class="code" id="ylsg2k_89">structs</code> en C++ son una herramienta poderosa para agrupar datos relacionados bajo un solo nombre, lo que facilita el manejo de datos complejos. Adem&aacute;s, el uso combinado de <code class="code" id="ylsg2k_90">structs</code> con punteros y memoria din&aacute;mica permite una mayor flexibilidad en la gesti&oacute;n de datos, permitiendo a los desarrolladores crear estructuras que pueden adaptarse a diferentes necesidades en tiempo de ejecuci&oacute;n.</p></section><div class="last-modified">Last modified: 19 agosto 2024</div><div data-feedback-placeholder="true"></div><div class="navigation-links _bottom"><a href="estructuras.html" class="navigation-links__prev">Conceptos Avanzados sobre `struct` en C++</a><a href="apuntadores-y-memoria-dinamica.html" class="navigation-links__next">Apuntadores y Memoria Din&aacute;mica en C++</a></div></article><div id="disqus_thread"></div></div></section></main></div><script src="https://resources.jetbrains.com/writerside/apidoc/6.10.0-b408/app.js"></script></body></html>

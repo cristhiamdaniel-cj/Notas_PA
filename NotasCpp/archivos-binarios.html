@@ -1,0 +1,184 @@
+<!DOCTYPE html SYSTEM "about:legacy-compat">
+<html lang="en-US" data-preset="contrast" data-primary-color="#307FFF"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta charset="UTF-8"><meta name="robots" content="noindex"><meta name="built-on" content="2024-08-19T14:46:06.655547567"><title>Archivos en C++: Enfoque en Archivos Binarios | Instance Name</title><script type="application/json" id="virtual-toc-data">[{"id":"1-introducci-n","level":0,"title":"1. Introducción","anchor":"#1-introducci-n"},{"id":"2-conceptos-b-sicos-archivos-de-texto-vs-archivos-binarios","level":0,"title":"2. Conceptos Básicos: Archivos de Texto vs. Archivos Binarios","anchor":"#2-conceptos-b-sicos-archivos-de-texto-vs-archivos-binarios"},{"id":"3-manipulaci-n-de-datos-primitivos-en-archivos-binarios","level":0,"title":"3. Manipulación de Datos Primitivos en Archivos Binarios","anchor":"#3-manipulaci-n-de-datos-primitivos-en-archivos-binarios"},{"id":"4-manipulaci-n-de-datos-compuestos-en-archivos-binarios","level":0,"title":"4. Manipulación de Datos Compuestos en Archivos Binarios","anchor":"#4-manipulaci-n-de-datos-compuestos-en-archivos-binarios"},{"id":"5-operaciones-avanzadas-en-archivos-binarios","level":0,"title":"5. Operaciones Avanzadas en Archivos Binarios","anchor":"#5-operaciones-avanzadas-en-archivos-binarios"},{"id":"6-conclusi-n","level":0,"title":"6. Conclusión","anchor":"#6-conclusi-n"}]</script><script type="application/json" id="topic-shortcuts"></script><link href="https://resources.jetbrains.com/writerside/apidoc/6.10.0-b408/app.css" rel="stylesheet"><meta name="msapplication-TileColor" content="#000000"><link rel="apple-touch-icon" sizes="180x180" href="https://jetbrains.com/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="https://jetbrains.com/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="https://jetbrains.com/favicon-16x16.png"><meta name="msapplication-TileImage" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-144x144.png"><meta name="msapplication-square70x70logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-70x70.png"><meta name="msapplication-square150x150logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-150x150.png"><meta name="msapplication-wide310x150logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-310x150.png"><meta name="msapplication-square310x310logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-310x310.png"><meta name="image" content=""><!-- Open Graph --><meta property="og:title" content="Archivos en C++: Enfoque en Archivos Binarios | Instance Name"><meta property="og:description" content=""><meta property="og:image" content=""><meta property="og:site_name" content="Instance Name Help"><meta property="og:type" content="website"><meta property="og:locale" content="en_US"><meta property="og:url" content="writerside-documentation/archivos-binarios.html"><!-- End Open Graph --><!-- Twitter Card --><meta name="twitter:card" content="summary_large_image"><meta name="twitter:site" content=""><meta name="twitter:title" content="Archivos en C++: Enfoque en Archivos Binarios | Instance Name"><meta name="twitter:description" content=""><meta name="twitter:creator" content=""><meta name="twitter:image:src" content=""><!-- End Twitter Card --><!-- Schema.org WebPage --><script type="application/ld+json">{
+    "@context": "http://schema.org",
+    "@type": "WebPage",
+    "@id": "writerside-documentation/archivos-binarios.html#webpage",
+    "url": "writerside-documentation/archivos-binarios.html",
+    "name": "Archivos en C++: Enfoque en Archivos Binarios | Instance Name",
+    "description": "",
+    "image": "",
+    "inLanguage":"en-US"
+}</script><!-- End Schema.org --><!-- Schema.org WebSite --><script type="application/ld+json">{
+    "@type": "WebSite",
+    "@id": "writerside-documentation/#website",
+    "url": "writerside-documentation/",
+    "name": "Instance Name Help"
+}</script><!-- End Schema.org --></head><body data-id="Archivos-Binarios" data-main-title="Archivos en C++: Enfoque en Archivos Binarios" data-article-props="{&quot;seeAlsoStyle&quot;:&quot;links&quot;}" data-template="article" data-breadcrumbs=""><div class="wrapper"><main class="panel _main"><header class="panel__header"><div class="container"><h3>Instance Name  Help</h3><div class="panel-trigger"></div></div></header><section class="panel__content"><div class="container"><article class="article" data-shortcut-switcher="inactive"><h1 data-toc="Archivos-Binarios" id="Archivos-Binarios.md">Archivos en C++: Enfoque en Archivos Binarios</h1><section class="chapter"><h2 id="1-introducci-n" data-toc="1-introducci-n">1. Introducci&oacute;n</h2><p id="lhl4fu_9">Los archivos son una parte esencial de la programaci&oacute;n en C++, permitiendo a los programas almacenar datos de manera persistente. Existen dos tipos principales de archivos: <span class="control" id="lhl4fu_11">archivos de texto</span> y <span class="control" id="lhl4fu_12">archivos binarios</span>. Mientras que los archivos de texto almacenan datos en formato legible por humanos, los archivos binarios almacenan datos en un formato m&aacute;s compacto y eficiente, que es directamente interpretable por la m&aacute;quina.</p><p id="lhl4fu_10">Este documento se centra en los <span class="control" id="lhl4fu_13">archivos binarios</span>, cubriendo desde los conceptos b&aacute;sicos hasta t&eacute;cnicas avanzadas para manejar datos primitivos y compuestos, as&iacute; como el uso de funciones de posicionamiento como <code class="code" id="lhl4fu_14">seekp</code> y <code class="code" id="lhl4fu_15">seekg</code>.</p></section><section class="chapter"><h2 id="2-conceptos-b-sicos-archivos-de-texto-vs-archivos-binarios" data-toc="2-conceptos-b-sicos-archivos-de-texto-vs-archivos-binarios">2. Conceptos B&aacute;sicos: Archivos de Texto vs. Archivos Binarios</h2><section class="chapter"><h3 id="2-1-archivos-de-texto" data-toc="2-1-archivos-de-texto">2.1 Archivos de Texto</h3><p id="lhl4fu_18">En un archivo de texto, los datos se almacenan como una secuencia de caracteres, utilizando codificaciones como ASCII o UTF-8. Estos archivos son f&aacute;ciles de leer y editar con un editor de texto simple.</p><div class="code-block" data-lang="none">
+#include &lt;iostream&gt;
+#include &lt;fstream&gt;
+
+int main() {
+    std::ofstream archivo(&quot;ejemplo.txt&quot;); // Crear un archivo de texto
+    archivo &lt;&lt; &quot;Hola, mundo!&quot; &lt;&lt; std::endl; // Escribir en el archivo
+    archivo.close(); // Cerrar el archivo
+
+    return 0;
+}
+</div></section><section class="chapter"><h3 id="2-2-archivos-binarios" data-toc="2-2-archivos-binarios">2.2 Archivos Binarios</h3><p id="lhl4fu_20">En un archivo binario, los datos se almacenan en su representaci&oacute;n binaria nativa, lo que hace que los archivos sean m&aacute;s eficientes en t&eacute;rminos de almacenamiento y velocidad de acceso. Sin embargo, no son legibles directamente por humanos.</p><div class="code-block" data-lang="none">
+#include &lt;iostream&gt;
+#include &lt;fstream&gt;
+
+int main() {
+    int numero = 12345;
+    std::ofstream archivo(&quot;ejemplo.bin&quot;, std::ios::binary); // Crear un archivo binario
+    archivo.write(reinterpret_cast&lt;char*&gt;(&amp;numero), sizeof(numero)); // Escribir el número en formato binario
+    archivo.close(); // Cerrar el archivo
+
+    return 0;
+}
+</div></section></section><section class="chapter"><h2 id="3-manipulaci-n-de-datos-primitivos-en-archivos-binarios" data-toc="3-manipulaci-n-de-datos-primitivos-en-archivos-binarios">3. Manipulaci&oacute;n de Datos Primitivos en Archivos Binarios</h2><section class="chapter"><h3 id="3-1-escritura-de-datos-primitivos" data-toc="3-1-escritura-de-datos-primitivos">3.1 Escritura de Datos Primitivos</h3><p id="lhl4fu_24">Para escribir datos primitivos como <code class="code" id="lhl4fu_26">int</code>, <code class="code" id="lhl4fu_27">float</code>, o <code class="code" id="lhl4fu_28">char</code> en un archivo binario, se utiliza la funci&oacute;n <code class="code" id="lhl4fu_29">write</code> del objeto <code class="code" id="lhl4fu_30">ofstream</code>. Es necesario convertir el puntero al tipo de dato a un puntero a <code class="code" id="lhl4fu_31">char</code> usando <code class="code" id="lhl4fu_32">reinterpret_cast</code>.</p><div class="code-block" data-lang="none">
+#include &lt;iostream&gt;
+#include &lt;fstream&gt;
+
+int main() {
+    int numero = 100;
+    float valor = 3.14;
+    char letra = 'A';
+
+    std::ofstream archivo(&quot;datos.bin&quot;, std::ios::binary);
+
+    archivo.write(reinterpret_cast&lt;char*&gt;(&amp;numero), sizeof(numero));
+    archivo.write(reinterpret_cast&lt;char*&gt;(&amp;valor), sizeof(valor));
+    archivo.write(reinterpret_cast&lt;char*&gt;(&amp;letra), sizeof(letra));
+
+    archivo.close();
+
+    return 0;
+}
+</div></section><section class="chapter"><h3 id="3-2-lectura-de-datos-primitivos" data-toc="3-2-lectura-de-datos-primitivos">3.2 Lectura de Datos Primitivos</h3><p id="lhl4fu_33">Para leer datos primitivos de un archivo binario, se utiliza la funci&oacute;n <code class="code" id="lhl4fu_35">read</code> del objeto <code class="code" id="lhl4fu_36">ifstream</code>.</p><div class="code-block" data-lang="none">
+#include &lt;iostream&gt;
+#include &lt;fstream&gt;
+
+int main() {
+    int numero;
+    float valor;
+    char letra;
+
+    std::ifstream archivo(&quot;datos.bin&quot;, std::ios::binary);
+
+    archivo.read(reinterpret_cast&lt;char*&gt;(&amp;numero), sizeof(numero));
+    archivo.read(reinterpret_cast&lt;char*&gt;(&amp;valor), sizeof(valor));
+    archivo.read(reinterpret_cast&lt;char*&gt;(&amp;letra), sizeof(letra));
+
+    archivo.close();
+
+    std::cout &lt;&lt; &quot;Numero: &quot; &lt;&lt; numero &lt;&lt; &quot;\nValor: &quot; &lt;&lt; valor &lt;&lt; &quot;\nLetra: &quot; &lt;&lt; letra &lt;&lt; std::endl;
+
+    return 0;
+}
+</div></section></section><section class="chapter"><h2 id="4-manipulaci-n-de-datos-compuestos-en-archivos-binarios" data-toc="4-manipulaci-n-de-datos-compuestos-en-archivos-binarios">4. Manipulaci&oacute;n de Datos Compuestos en Archivos Binarios</h2><section class="chapter"><h3 id="4-1-estructuras-y-archivos-binarios" data-toc="4-1-estructuras-y-archivos-binarios">4.1 Estructuras y Archivos Binarios</h3><p id="lhl4fu_40">Las estructuras (<code class="code" id="lhl4fu_42">structs</code>) en C++ pueden almacenarse en archivos binarios de la misma manera que los datos primitivos, siempre que no contengan apuntadores u otros elementos que dependan de la memoria din&aacute;mica.</p><div class="code-block" data-lang="none">
+#include &lt;iostream&gt;
+#include &lt;fstream&gt;
+
+struct Estudiante {
+    char nombre[50];
+    int edad;
+    float calificacion;
+};
+
+int main() {
+    Estudiante estudiante = {&quot;Juan Perez&quot;, 20, 89.5};
+
+    std::ofstream archivo(&quot;estudiante.bin&quot;, std::ios::binary);
+    archivo.write(reinterpret_cast&lt;char*&gt;(&amp;estudiante), sizeof(estudiante));
+    archivo.close();
+
+    return 0;
+}
+</div></section><section class="chapter"><h3 id="4-2-lectura-de-estructuras-desde-un-archivo-binario" data-toc="4-2-lectura-de-estructuras-desde-un-archivo-binario">4.2 Lectura de Estructuras desde un Archivo Binario</h3><p id="lhl4fu_43">La lectura de estructuras desde un archivo binario sigue el mismo patr&oacute;n que con datos primitivos.</p><div class="code-block" data-lang="none">
+#include &lt;iostream&gt;
+#include &lt;fstream&gt;
+
+struct Estudiante {
+    char nombre[50];
+    int edad;
+    float calificacion;
+};
+
+int main() {
+    Estudiante estudiante;
+
+    std::ifstream archivo(&quot;estudiante.bin&quot;, std::ios::binary);
+    archivo.read(reinterpret_cast&lt;char*&gt;(&amp;estudiante), sizeof(estudiante));
+    archivo.close();
+
+    std::cout &lt;&lt; &quot;Nombre: &quot; &lt;&lt; estudiante.nombre &lt;&lt; &quot;\nEdad: &quot; &lt;&lt; estudiante.edad &lt;&lt; &quot;\nCalificación: &quot; &lt;&lt; estudiante.calificacion &lt;&lt; std::endl;
+
+    return 0;
+}
+</div></section><section class="chapter"><h3 id="4-3-consideraciones-sobre-alineaci-n-y-portabilidad" data-toc="4-3-consideraciones-sobre-alineaci-n-y-portabilidad">4.3 Consideraciones sobre Alineaci&oacute;n y Portabilidad</h3><p id="lhl4fu_45">Es importante tener en cuenta la alineaci&oacute;n de los datos dentro de las estructuras, ya que diferentes compiladores o arquitecturas pueden alinear los datos de manera diferente. Para garantizar la portabilidad, es recomendable escribir y leer los campos de las estructuras individualmente o utilizar t&eacute;cnicas de serializaci&oacute;n/deserializaci&oacute;n espec&iacute;ficas.</p></section></section><section class="chapter"><h2 id="5-operaciones-avanzadas-en-archivos-binarios" data-toc="5-operaciones-avanzadas-en-archivos-binarios">5. Operaciones Avanzadas en Archivos Binarios</h2><section class="chapter"><h3 id="5-1-uso-de-seekp-y-seekg-para-reposicionar-el-puntero" data-toc="5-1-uso-de-seekp-y-seekg-para-reposicionar-el-puntero">5.1 Uso de <code class="code" id="lhl4fu_53">seekp</code> y <code class="code" id="lhl4fu_54">seekg</code> para Reposicionar el Puntero</h3><p id="lhl4fu_50">Cuando se trabaja con archivos binarios, a menudo es necesario mover el puntero de lectura/escritura a una posici&oacute;n espec&iacute;fica dentro del archivo. Esto se logra utilizando las funciones <code class="code" id="lhl4fu_55">seekp</code> (seek put) y <code class="code" id="lhl4fu_56">seekg</code> (seek get). Estas funciones permiten reposicionar el puntero en cualquier lugar del archivo, facilitando operaciones como la modificaci&oacute;n de datos en medio del archivo o la lectura selectiva de datos.</p><ul class="list _bullet" id="lhl4fu_51"><li class="list__item" id="lhl4fu_57"><p><span class="control" id="lhl4fu_61"><code class="code" id="lhl4fu_63">seekp(pos)</code></span>: Mueve el puntero de escritura a la posici&oacute;n <code class="code" id="lhl4fu_62">pos</code>.</p></li><li class="list__item" id="lhl4fu_58"><p><span class="control" id="lhl4fu_64"><code class="code" id="lhl4fu_66">seekg(pos)</code></span>: Mueve el puntero de lectura a la posici&oacute;n <code class="code" id="lhl4fu_65">pos</code>.</p></li><li class="list__item" id="lhl4fu_59"><p><span class="control" id="lhl4fu_67"><code class="code" id="lhl4fu_68">tellp()</code></span>: Devuelve la posici&oacute;n actual del puntero de escritura.</p></li><li class="list__item" id="lhl4fu_60"><p><span class="control" id="lhl4fu_69"><code class="code" id="lhl4fu_70">tellg()</code></span>: Devuelve la posici&oacute;n actual del puntero de lectura.</p></li></ul><section class="chapter"><h4 id="ejemplo-modificaci-n-de-un-valor-en-un-archivo-binario" data-toc="ejemplo-modificaci-n-de-un-valor-en-un-archivo-binario">Ejemplo: Modificaci&oacute;n de un Valor en un Archivo Binario</h4><div class="code-block" data-lang="none">
+#include &lt;iostream&gt;
+#include &lt;fstream&gt;
+
+int main() {
+    std::fstream archivo(&quot;datos.bin&quot;, std::ios::in | std::ios::out | std::ios::binary);
+
+    int nuevoValor = 200;
+    archivo.seekp(sizeof(int), std::ios::beg); // Mover el puntero al segundo dato (un float en este caso)
+    archivo.write(reinterpret_cast&lt;char*&gt;(&amp;nuevoValor), sizeof(nuevoValor));
+
+    archivo.close();
+
+    return 0;
+}
+</div><p id="lhl4fu_72">En este ejemplo, el puntero de escritura se mueve al segundo elemento en el archivo binario, y el valor de ese elemento se modifica. Esto es &uacute;til en situaciones donde solo necesitas actualizar una peque&ntilde;a parte del archivo sin reescribirlo por completo.</p></section></section><section class="chapter"><h3 id="5-2-inserci-n-de-nuevos-datos" data-toc="5-2-inserci-n-de-nuevos-datos">5.2 Inserci&oacute;n de Nuevos Datos</h3><p id="lhl4fu_73">Para insertar nuevos datos en un archivo binario, generalmente se requiere crear un nuevo archivo y copiar los datos antiguos junto con los nuevos en el orden deseado.</p><div class="code-block" data-lang="none">
+#include &lt;iostream&gt;
+#include &lt;fstream&gt;
+
+int main() {
+    std::ifstream archivoLectura(&quot;datos.bin&quot;, std::ios::binary);
+    std::ofstream archivoEscritura(&quot;nuevo_datos.bin&quot;, std::ios::binary);
+
+    // Leer y copiar el primer entero
+    int numero;
+    archivoLectura.read(reinterpret_cast&lt;char*&gt;(&amp;numero), sizeof(numero));
+    archivoEscritura.write(reinterpret_cast&lt;char*&gt;(&amp;numero), sizeof(numero));
+
+    // Insertar un nuevo float
+    float nuevoValor = 7.89;
+    archivoEscritura.write(reinterpret_cast&lt;char*&gt;(&amp;nuevoValor), sizeof(nuevoValor));
+
+    // Copiar el resto del archivo
+    float valor;
+    char letra;
+    archivoLectura.read(reinterpret_cast&lt;char*&gt;(&amp;valor), sizeof(valor));
+    archivoLectura.read(reinterpret_cast&lt;char*&gt;(&amp;letra), sizeof(letra));
+    archivoEscritura.write(reinterpret_cast&lt;char*&gt;(&amp;valor), sizeof(valor));
+    archivoEscritura.write(reinterpret_cast&lt;char*&gt;(&amp;letra), sizeof(letra));
+
+    archivoLectura.close();
+    archivoEscritura.close();
+
+    return 0;
+}
+</div></section><section class="chapter"><h3 id="5-3-uso-de-seekg-para-lectura-selectiva" data-toc="5-3-uso-de-seekg-para-lectura-selectiva">5.3 Uso de <code class="code" id="lhl4fu_79">seekg</code> para Lectura Selectiva</h3><p id="lhl4fu_76">A veces, solo es necesario leer una parte espec&iacute;fica de un archivo binario, lo que se puede hacer usando <code class="code" id="lhl4fu_80">seekg</code> para mover el puntero de lectura a la posici&oacute;n deseada.</p><div class="code-block" data-lang="none">
+#include &lt;iostream&gt;
+#include &lt;fstream&gt;
+
+int main() {
+    std::ifstream archivo(&quot;datos.bin&quot;, std::ios::binary);
+
+    archivo.seekg(sizeof(int), std::ios::beg); // Mover el puntero al segundo
+
+ dato
+
+    float valor;
+    archivo.read(reinterpret_cast&lt;char*&gt;(&amp;valor), sizeof(valor));
+
+    std::cout &lt;&lt; &quot;Valor leído: &quot; &lt;&lt; valor &lt;&lt; std::endl;
+
+    archivo.close();
+
+    return 0;
+}
+</div><p id="lhl4fu_78">En este ejemplo, el puntero de lectura se mueve al segundo dato en el archivo binario, y se lee solo ese valor. Esto es &uacute;til cuando se trabaja con archivos grandes y se necesita acceder r&aacute;pidamente a datos espec&iacute;ficos sin cargar todo el archivo en memoria.</p></section></section><section class="chapter"><h2 id="6-conclusi-n" data-toc="6-conclusi-n">6. Conclusi&oacute;n</h2><p id="lhl4fu_81">Los archivos binarios son una herramienta poderosa en C++ para almacenar y manipular datos de manera eficiente. Desde la escritura y lectura de datos primitivos hasta la manipulaci&oacute;n de estructuras completas, el manejo de archivos binarios ofrece un control detallado sobre c&oacute;mo se almacenan los datos. Adem&aacute;s, las funciones de posicionamiento como <code class="code" id="lhl4fu_82">seekp</code> y <code class="code" id="lhl4fu_83">seekg</code> permiten realizar operaciones avanzadas como la modificaci&oacute;n y la lectura selectiva de datos en archivos binarios, lo que proporciona una gran flexibilidad y eficiencia en el manejo de datos persistentes.</p></section><div class="last-modified">Last modified: 19 agosto 2024</div><div data-feedback-placeholder="true"></div><div class="navigation-links _bottom"><a href="ejemplo-cadenas.html" class="navigation-links__prev">Ejemplo Combinado: Uso de `std::string` y Apuntadores Din&aacute;micos en C++</a><a href="ejemplo-binario.html" class="navigation-links__next">Ejemplo Completo: Operaciones en un Archivo Binario en C++</a></div></article><div id="disqus_thread"></div></div></section></main></div><script src="https://resources.jetbrains.com/writerside/apidoc/6.10.0-b408/app.js"></script></body></html>

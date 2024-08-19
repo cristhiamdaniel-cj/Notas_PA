@@ -1,0 +1,157 @@
+<!DOCTYPE html SYSTEM "about:legacy-compat">
+<html lang="en-US" data-preset="contrast" data-primary-color="#307FFF"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta charset="UTF-8"><meta name="robots" content="noindex"><meta name="built-on" content="2024-08-19T14:46:06.631153687"><title>Ejercicio Avanzado: Implementaci&oacute;n de Regresi&oacute;n Lineal Usando Registros, Apuntadores y Memoria Din&aacute;mica en C++ | Instance Name</title><script type="application/json" id="virtual-toc-data">[{"id":"enunciado-del-problema","level":0,"title":"Enunciado del Problema","anchor":"#enunciado-del-problema"},{"id":"c-digo-completo","level":0,"title":"Código Completo","anchor":"#c-digo-completo"},{"id":"explicaci-n-del-c-digo","level":0,"title":"Explicación del Código","anchor":"#explicaci-n-del-c-digo"},{"id":"conclusi-n","level":0,"title":"Conclusión","anchor":"#conclusi-n"}]</script><script type="application/json" id="topic-shortcuts"></script><link href="https://resources.jetbrains.com/writerside/apidoc/6.10.0-b408/app.css" rel="stylesheet"><meta name="msapplication-TileColor" content="#000000"><link rel="apple-touch-icon" sizes="180x180" href="https://jetbrains.com/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="https://jetbrains.com/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="https://jetbrains.com/favicon-16x16.png"><meta name="msapplication-TileImage" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-144x144.png"><meta name="msapplication-square70x70logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-70x70.png"><meta name="msapplication-square150x150logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-150x150.png"><meta name="msapplication-wide310x150logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-310x150.png"><meta name="msapplication-square310x310logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-310x310.png"><meta name="image" content=""><!-- Open Graph --><meta property="og:title" content="Ejercicio Avanzado: Implementaci&oacute;n de Regresi&oacute;n Lineal Usando Registros, Apuntadores y Memoria Din&aacute;mica en C++ | Instance Name"><meta property="og:description" content=""><meta property="og:image" content=""><meta property="og:site_name" content="Instance Name Help"><meta property="og:type" content="website"><meta property="og:locale" content="en_US"><meta property="og:url" content="writerside-documentation/ejercicio-memoria.html"><!-- End Open Graph --><!-- Twitter Card --><meta name="twitter:card" content="summary_large_image"><meta name="twitter:site" content=""><meta name="twitter:title" content="Ejercicio Avanzado: Implementaci&oacute;n de Regresi&oacute;n Lineal Usando Registros, Apuntadores y Memoria Din&aacute;mica en C++ | Instance Name"><meta name="twitter:description" content=""><meta name="twitter:creator" content=""><meta name="twitter:image:src" content=""><!-- End Twitter Card --><!-- Schema.org WebPage --><script type="application/ld+json">{
+    "@context": "http://schema.org",
+    "@type": "WebPage",
+    "@id": "writerside-documentation/ejercicio-memoria.html#webpage",
+    "url": "writerside-documentation/ejercicio-memoria.html",
+    "name": "Ejercicio Avanzado: Implementaci&oacute;n de Regresi&oacute;n Lineal Usando Registros, Apuntadores y Memoria Din&aacute;mica en C++ | Instance Name",
+    "description": "",
+    "image": "",
+    "inLanguage":"en-US"
+}</script><!-- End Schema.org --><!-- Schema.org WebSite --><script type="application/ld+json">{
+    "@type": "WebSite",
+    "@id": "writerside-documentation/#website",
+    "url": "writerside-documentation/",
+    "name": "Instance Name Help"
+}</script><!-- End Schema.org --></head><body data-id="Ejercicio-Memoria" data-main-title="Ejercicio Avanzado: Implementación de Regresión Lineal Usando Registros, Apuntadores y Memoria Dinámica en C++" data-article-props="{&quot;seeAlsoStyle&quot;:&quot;links&quot;}" data-template="article" data-breadcrumbs=""><div class="wrapper"><main class="panel _main"><header class="panel__header"><div class="container"><h3>Instance Name  Help</h3><div class="panel-trigger"></div></div></header><section class="panel__content"><div class="container"><article class="article" data-shortcut-switcher="inactive"><h1 data-toc="Ejercicio-Memoria" id="Ejercicio-Memoria.md">Ejercicio Avanzado: Implementación de Regresión Lineal Usando Registros, Apuntadores y Memoria Dinámica en C++</h1><section class="chapter"><h2 id="enunciado-del-problema" data-toc="enunciado-del-problema">Enunciado del Problema</h2><p id="-uaqj7j_7">Se desea implementar un programa en C++ que realice una regresi&oacute;n lineal simple para predecir un valor <code class="code" id="-uaqj7j_10">y</code> en funci&oacute;n de un valor <code class="code" id="-uaqj7j_11">x</code>. Para ello, se utilizar&aacute;n registros (<code class="code" id="-uaqj7j_12">structs</code>) para organizar los datos y los resultados, apuntadores para la manipulaci&oacute;n din&aacute;mica de la memoria, y operaciones aritm&eacute;ticas avanzadas.</p><p id="-uaqj7j_8">El programa debe:</p><ol class="list _decimal" id="-uaqj7j_9" type="1"><li class="list__item" id="-uaqj7j_13"><p>Leer un conjunto de datos de tama&ntilde;o <code class="code" id="-uaqj7j_16">n</code> donde cada punto tiene un valor <code class="code" id="-uaqj7j_17">x</code> y un valor <code class="code" id="-uaqj7j_18">y</code>.</p></li><li class="list__item" id="-uaqj7j_14"><p>Calcular los coeficientes <code class="code" id="-uaqj7j_19">a</code> y <code class="code" id="-uaqj7j_20">b</code> de la regresi&oacute;n lineal usando la f&oacute;rmula <code class="code" id="-uaqj7j_21">y = a + b * x</code>.</p></li><li class="list__item" id="-uaqj7j_15"><p>Realizar la predicci&oacute;n para un nuevo valor <code class="code" id="-uaqj7j_22">x</code> y mostrar el resultado.</p></li></ol></section><section class="chapter"><h2 id="c-digo-completo" data-toc="c-digo-completo">C&oacute;digo Completo</h2><div class="code-block" data-lang="none">
+#include &lt;iostream&gt;
+#include &lt;cmath&gt;
+
+// Estructura para almacenar los datos de un punto (x, y)
+struct Punto {
+    double x;
+    double y;
+};
+
+// Estructura para almacenar los coeficientes de la regresión lineal
+struct Coeficientes {
+    double a;
+    double b;
+};
+
+// Función para calcular los coeficientes de la regresión lineal
+Coeficientes* calcularCoeficientes(Punto* puntos, int n) {
+    double sumaX = 0, sumaY = 0, sumaXY = 0, sumaX2 = 0;
+
+    for (int i = 0; i &lt; n; i++) {
+        sumaX += puntos[i].x;
+        sumaY += puntos[i].y;
+        sumaXY += puntos[i].x * puntos[i].y;
+        sumaX2 += puntos[i].x * puntos[i].x;
+    }
+
+    double b = (n * sumaXY - sumaX * sumaY) / (n * sumaX2 - sumaX * sumaX);
+    double a = (sumaY - b * sumaX) / n;
+
+    Coeficientes* coef = new Coeficientes; // Memoria dinámica para los coeficientes
+    coef-&gt;a = a;
+    coef-&gt;b = b;
+
+    return coef; // Retorna un puntero a los coeficientes
+}
+
+// Función para predecir el valor de y dado un valor de x
+double predecirY(Coeficientes* coef, double x) {
+    return coef-&gt;a + coef-&gt;b * x;
+}
+
+int main() {
+    int n;
+    std::cout &lt;&lt; &quot;Ingrese el número de puntos: &quot;;
+    std::cin &gt;&gt; n;
+
+    Punto* puntos = new Punto[n]; // Memoria dinámica para los puntos
+
+    std::cout &lt;&lt; &quot;Ingrese los valores de x e y:\n&quot;;
+    for (int i = 0; i &lt; n; i++) {
+        std::cout &lt;&lt; &quot;Punto &quot; &lt;&lt; i + 1 &lt;&lt; &quot;:\n&quot;;
+        std::cout &lt;&lt; &quot;x: &quot;;
+        std::cin &gt;&gt; puntos[i].x;
+        std::cout &lt;&lt; &quot;y: &quot;;
+        std::cin &gt;&gt; puntos[i].y;
+    }
+
+    Coeficientes* coef = calcularCoeficientes(puntos, n); // Cálculo de los coeficientes
+
+    std::cout &lt;&lt; &quot;Ecuación de la regresión lineal: y = &quot; &lt;&lt; coef-&gt;a &lt;&lt; &quot; + &quot; &lt;&lt; coef-&gt;b &lt;&lt; &quot; * x\n&quot;;
+
+    double nuevoX;
+    std::cout &lt;&lt; &quot;Ingrese un valor de x para predecir y: &quot;;
+    std::cin &gt;&gt; nuevoX;
+
+    double prediccion = predecirY(coef, nuevoX);
+    std::cout &lt;&lt; &quot;El valor predicho de y es: &quot; &lt;&lt; prediccion &lt;&lt; std::endl;
+
+    delete[] puntos; // Liberar memoria de los puntos
+    delete coef; // Liberar memoria de los coeficientes
+
+    return 0;
+}
+</div></section><section class="chapter"><h2 id="explicaci-n-del-c-digo" data-toc="explicaci-n-del-c-digo">Explicaci&oacute;n del C&oacute;digo</h2><section class="chapter"><h3 id="1-estructuras-para-datos-y-coeficientes" data-toc="1-estructuras-para-datos-y-coeficientes">1. Estructuras para Datos y Coeficientes</h3><div class="code-block" data-lang="none">
+struct Punto {
+    double x;
+    double y;
+};
+
+struct Coeficientes {
+    double a;
+    double b;
+};
+</div><ul class="list _bullet" id="-uaqj7j_29"><li class="list__item" id="-uaqj7j_30"><p><span class="control" id="-uaqj7j_32">Punto</span>: Esta <code class="code" id="-uaqj7j_33">struct</code> almacena los valores <code class="code" id="-uaqj7j_34">x</code> e <code class="code" id="-uaqj7j_35">y</code> de cada punto de datos.</p></li><li class="list__item" id="-uaqj7j_31"><p><span class="control" id="-uaqj7j_36">Coeficientes</span>: Esta <code class="code" id="-uaqj7j_37">struct</code> almacena los coeficientes <code class="code" id="-uaqj7j_38">a</code> y <code class="code" id="-uaqj7j_39">b</code> de la ecuaci&oacute;n de regresi&oacute;n lineal <code class="code" id="-uaqj7j_40">y = a + b * x</code>.</p></li></ul></section><section class="chapter"><h3 id="2-funci-n-para-calcular-los-coeficientes-de-la-regresi-n-lineal" data-toc="2-funci-n-para-calcular-los-coeficientes-de-la-regresi-n-lineal">2. Funci&oacute;n para Calcular los Coeficientes de la Regresi&oacute;n Lineal</h3><div class="code-block" data-lang="none">
+Coeficientes* calcularCoeficientes(Punto* puntos, int n) {
+    double sumaX = 0, sumaY = 0, sumaXY = 0, sumaX2 = 0;
+
+    for (int i = 0; i &lt; n; i++) {
+        sumaX += puntos[i].x;
+        sumaY += puntos[i].y;
+        sumaXY += puntos[i].x * puntos[i].y;
+        sumaX2 += puntos[i].x * puntos[i].x;
+    }
+
+    double b = (n * sumaXY - sumaX * sumaY) / (n * sumaX2 - sumaX * sumaX);
+    double a = (sumaY - b * sumaX) / n;
+
+    Coeficientes* coef = new Coeficientes; // Memoria dinámica para los coeficientes
+    coef-&gt;a = a;
+    coef-&gt;b = b;
+
+    return coef; // Retorna un puntero a los coeficientes
+}
+</div><ul class="list _bullet" id="-uaqj7j_42"><li class="list__item" id="-uaqj7j_43"><p><span class="control" id="-uaqj7j_46">Entrada</span>: La funci&oacute;n recibe un apuntador a un arreglo de <code class="code" id="-uaqj7j_47">Punto</code> y un entero <code class="code" id="-uaqj7j_48">n</code> que representa la cantidad de puntos.</p></li><li class="list__item" id="-uaqj7j_44"><p><span class="control" id="-uaqj7j_49">C&aacute;lculos</span>: Se calculan las sumas necesarias para determinar los coeficientes <code class="code" id="-uaqj7j_50">a</code> y <code class="code" id="-uaqj7j_51">b</code> usando las f&oacute;rmulas est&aacute;ndar de regresi&oacute;n lineal.</p></li><li class="list__item" id="-uaqj7j_45"><p><span class="control" id="-uaqj7j_52">Memoria Din&aacute;mica</span>: Los coeficientes se almacenan en memoria din&aacute;mica usando <code class="code" id="-uaqj7j_53">new</code>, y la funci&oacute;n retorna un apuntador a esa memoria.</p></li></ul></section><section class="chapter"><h3 id="3-funci-n-para-predecir-el-valor-de-y" data-toc="3-funci-n-para-predecir-el-valor-de-y">3. Funci&oacute;n para Predecir el Valor de <code class="code" id="-uaqj7j_57">y</code></h3><div class="code-block" data-lang="none">
+double predecirY(Coeficientes* coef, double x) {
+    return coef-&gt;a + coef-&gt;b * x;
+}
+</div><ul class="list _bullet" id="-uaqj7j_56"><li class="list__item" id="-uaqj7j_58"><p><span class="control" id="-uaqj7j_60">Entrada</span>: La funci&oacute;n recibe un apuntador a la <code class="code" id="-uaqj7j_61">struct</code> <code class="code" id="-uaqj7j_62">Coeficientes</code> y un valor <code class="code" id="-uaqj7j_63">x</code>.</p></li><li class="list__item" id="-uaqj7j_59"><p><span class="control" id="-uaqj7j_64">Salida</span>: Retorna el valor predicho de <code class="code" id="-uaqj7j_65">y</code> utilizando la ecuaci&oacute;n de la regresi&oacute;n lineal.</p></li></ul></section><section class="chapter"><h3 id="4-funci-n-principal-main" data-toc="4-funci-n-principal-main">4. Funci&oacute;n Principal <code class="code" id="-uaqj7j_69">main</code></h3><div class="code-block" data-lang="none">
+int main() {
+    int n;
+    std::cout &lt;&lt; &quot;Ingrese el número de puntos: &quot;;
+    std::cin &gt;&gt; n;
+
+    Punto* puntos = new Punto[n]; // Memoria dinámica para los puntos
+
+    std::cout &lt;&lt; &quot;Ingrese los valores de x e y:\n&quot;;
+    for (int i = 0; i &lt; n; i++) {
+        std::cout &lt;&lt; &quot;Punto &quot; &lt;&lt; i + 1 &lt;&lt; &quot;:\n&quot;;
+        std::cout &lt;&lt; &quot;x: &quot;;
+        std::cin &gt;&gt; puntos[i].x;
+        std::cout &lt;&lt; &quot;y: &quot;;
+        std::cin &gt;&gt; puntos[i].y;
+    }
+
+    Coeficientes* coef = calcularCoeficientes(puntos, n); // Cálculo de los coeficientes
+
+    std::cout &lt;&lt; &quot;Ecuación de la regresión lineal: y = &quot; &lt;&lt; coef-&gt;a &lt;&lt; &quot; + &quot; &lt;&lt; coef-&gt;b &lt;&lt; &quot; * x\n&quot;;
+
+    double nuevoX;
+    std::cout &lt;&lt; &quot;Ingrese un valor de x para predecir y: &quot;;
+    std::cin &gt;&gt; nuevoX;
+
+    double prediccion = predecirY(coef, nuevoX);
+    std::cout &lt;&lt; &quot;El valor predicho de y es: &quot; &lt;&lt; prediccion &lt;&lt; std::endl;
+
+    delete[] puntos; // Liberar memoria de los puntos
+    delete coef; // Liberar memoria de los coeficientes
+
+    return 0;
+}
+</div><ul class="list _bullet" id="-uaqj7j_68"><li class="list__item" id="-uaqj7j_70"><p><span class="control" id="-uaqj7j_74">Ingreso de Datos</span>: El usuario ingresa el n&uacute;mero de puntos y los valores <code class="code" id="-uaqj7j_75">x</code> e <code class="code" id="-uaqj7j_76">y</code> para cada punto.</p></li><li class="list__item" id="-uaqj7j_71"><p><span class="control" id="-uaqj7j_77">Memoria Din&aacute;mica para los Datos</span>: Los puntos se almacenan en un arreglo din&aacute;mico de <code class="code" id="-uaqj7j_78">Punto</code>.</p></li><li class="list__item" id="-uaqj7j_72"><p><span class="control" id="-uaqj7j_79">C&aacute;lculo de la Regresi&oacute;n</span>: Se llaman a las funciones para calcular los coeficientes y para predecir el valor de <code class="code" id="-uaqj7j_80">y</code> para un nuevo <code class="code" id="-uaqj7j_81">x</code>.</p></li><li class="list__item" id="-uaqj7j_73"><p><span class="control" id="-uaqj7j_82">Liberaci&oacute;n de Memoria</span>: Se libera toda la memoria din&aacute;mica asignada para evitar fugas de memoria.</p></li></ul></section></section><section class="chapter"><h2 id="conclusi-n" data-toc="conclusi-n">Conclusi&oacute;n</h2><p id="-uaqj7j_83">Este ejercicio avanzado integra varios conceptos clave en C++, como el uso de registros (<code class="code" id="-uaqj7j_84">structs</code>), apuntadores, y memoria din&aacute;mica, aplicados a un problema real de regresi&oacute;n lineal. La capacidad de manipular la memoria directamente permite un manejo eficiente de los recursos y una mayor flexibilidad en la implementaci&oacute;n de algoritmos complejos. Este ejercicio es ideal para consolidar el entendimiento de c&oacute;mo estos conceptos se interrelacionan y se aplican en la resoluci&oacute;n de problemas matem&aacute;ticos en programaci&oacute;n.</p></section><div class="last-modified">Last modified: 19 agosto 2024</div><div data-feedback-placeholder="true"></div><div class="navigation-links _bottom"><a href="apuntadores-y-memoria-dinamica.html" class="navigation-links__prev">Apuntadores y Memoria Din&aacute;mica en C++</a><a href="arreglos-dinamicos.html" class="navigation-links__next">Arreglos Din&aacute;micos vs Arreglos Est&aacute;ticos en C++</a></div></article><div id="disqus_thread"></div></div></section></main></div><script src="https://resources.jetbrains.com/writerside/apidoc/6.10.0-b408/app.js"></script></body></html>

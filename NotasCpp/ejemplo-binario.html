@@ -1,0 +1,115 @@
+<!DOCTYPE html SYSTEM "about:legacy-compat">
+<html lang="en-US" data-preset="contrast" data-primary-color="#307FFF"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta charset="UTF-8"><meta name="robots" content="noindex"><meta name="built-on" content="2024-08-19T14:46:06.635651439"><title>Ejemplo Completo: Operaciones en un Archivo Binario en C++ | Instance Name</title><script type="application/json" id="virtual-toc-data">[{"id":"estructura-del-c-digo","level":0,"title":"Estructura del Código","anchor":"#estructura-del-c-digo"},{"id":"conclusi-n","level":0,"title":"Conclusión","anchor":"#conclusi-n"}]</script><script type="application/json" id="topic-shortcuts"></script><link href="https://resources.jetbrains.com/writerside/apidoc/6.10.0-b408/app.css" rel="stylesheet"><meta name="msapplication-TileColor" content="#000000"><link rel="apple-touch-icon" sizes="180x180" href="https://jetbrains.com/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="https://jetbrains.com/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="https://jetbrains.com/favicon-16x16.png"><meta name="msapplication-TileImage" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-144x144.png"><meta name="msapplication-square70x70logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-70x70.png"><meta name="msapplication-square150x150logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-150x150.png"><meta name="msapplication-wide310x150logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-310x150.png"><meta name="msapplication-square310x310logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-310x310.png"><meta name="image" content=""><!-- Open Graph --><meta property="og:title" content="Ejemplo Completo: Operaciones en un Archivo Binario en C++ | Instance Name"><meta property="og:description" content=""><meta property="og:image" content=""><meta property="og:site_name" content="Instance Name Help"><meta property="og:type" content="website"><meta property="og:locale" content="en_US"><meta property="og:url" content="writerside-documentation/ejemplo-binario.html"><!-- End Open Graph --><!-- Twitter Card --><meta name="twitter:card" content="summary_large_image"><meta name="twitter:site" content=""><meta name="twitter:title" content="Ejemplo Completo: Operaciones en un Archivo Binario en C++ | Instance Name"><meta name="twitter:description" content=""><meta name="twitter:creator" content=""><meta name="twitter:image:src" content=""><!-- End Twitter Card --><!-- Schema.org WebPage --><script type="application/ld+json">{
+    "@context": "http://schema.org",
+    "@type": "WebPage",
+    "@id": "writerside-documentation/ejemplo-binario.html#webpage",
+    "url": "writerside-documentation/ejemplo-binario.html",
+    "name": "Ejemplo Completo: Operaciones en un Archivo Binario en C++ | Instance Name",
+    "description": "",
+    "image": "",
+    "inLanguage":"en-US"
+}</script><!-- End Schema.org --><!-- Schema.org WebSite --><script type="application/ld+json">{
+    "@type": "WebSite",
+    "@id": "writerside-documentation/#website",
+    "url": "writerside-documentation/",
+    "name": "Instance Name Help"
+}</script><!-- End Schema.org --></head><body data-id="Ejemplo-Binario" data-main-title="Ejemplo Completo: Operaciones en un Archivo Binario en C++" data-article-props="{&quot;seeAlsoStyle&quot;:&quot;links&quot;}" data-template="article" data-breadcrumbs=""><div class="wrapper"><main class="panel _main"><header class="panel__header"><div class="container"><h3>Instance Name  Help</h3><div class="panel-trigger"></div></div></header><section class="panel__content"><div class="container"><article class="article" data-shortcut-switcher="inactive"><h1 data-toc="Ejemplo-Binario" id="Ejemplo-Binario.md">Ejemplo Completo: Operaciones en un Archivo Binario en C++</h1><p id="-d96pwi_3">Este ejemplo cubre todas las operaciones fundamentales que se pueden realizar en un archivo binario en C++, incluyendo escritura, lectura, modificaci&oacute;n, y lectura selectiva. Se utiliza una estructura <code class="code" id="-d96pwi_6">Estudiante</code> para representar los datos que se almacenan y manipulan en el archivo.</p><section class="chapter"><h2 id="estructura-del-c-digo" data-toc="estructura-del-c-digo">Estructura del C&oacute;digo</h2><section class="chapter"><h3 id="1-definici-n-de-la-estructura-estudiante" data-toc="1-definici-n-de-la-estructura-estudiante">1. Definici&oacute;n de la Estructura <code class="code" id="-d96pwi_17">Estudiante</code></h3><div class="code-block" data-lang="none">
+struct Estudiante {
+    char nombre[50];
+    int edad;
+    float calificacion;
+};
+</div><ul class="list _bullet" id="-d96pwi_15"><li class="list__item" id="-d96pwi_18"><p><span class="control" id="-d96pwi_21"><code class="code" id="-d96pwi_22">nombre[50]</code></span>: Un arreglo de caracteres para almacenar el nombre del estudiante.</p></li><li class="list__item" id="-d96pwi_19"><p><span class="control" id="-d96pwi_23"><code class="code" id="-d96pwi_24">edad</code></span>: Un entero para almacenar la edad del estudiante.</p></li><li class="list__item" id="-d96pwi_20"><p><span class="control" id="-d96pwi_25"><code class="code" id="-d96pwi_26">calificacion</code></span>: Un valor flotante para almacenar la calificaci&oacute;n del estudiante.</p></li></ul><p id="-d96pwi_16">Esta estructura ser&aacute; utilizada para almacenar y recuperar datos en el archivo binario.</p></section><section class="chapter"><h3 id="2-funci-n-escribirarchivobinario" data-toc="2-funci-n-escribirarchivobinario">2. Funci&oacute;n <code class="code" id="-d96pwi_30">escribirArchivoBinario</code></h3><div class="code-block" data-lang="none">
+void escribirArchivoBinario(const char* nombreArchivo) {
+    Estudiante estudiantes[3] = {
+        {&quot;Juan Perez&quot;, 20, 89.5},
+        {&quot;Maria Lopez&quot;, 22, 92.0},
+        {&quot;Carlos Ruiz&quot;, 19, 78.4}
+    };
+
+    std::ofstream archivo(nombreArchivo, std::ios::binary);
+    if (!archivo) {
+        std::cerr &lt;&lt; &quot;No se pudo abrir el archivo para escritura.&quot; &lt;&lt; std::endl;
+        return;
+    }
+
+    for (int i = 0; i &lt; 3; ++i) {
+        archivo.write(reinterpret_cast&lt;char*&gt;(&amp;estudiantes[i]), sizeof(Estudiante));
+    }
+
+    archivo.close();
+}
+</div><ul class="list _bullet" id="-d96pwi_29"><li class="list__item" id="-d96pwi_31"><p><span class="control" id="-d96pwi_33">Prop&oacute;sito</span>: Esta funci&oacute;n crea un archivo binario y escribe en &eacute;l un array de estructuras <code class="code" id="-d96pwi_34">Estudiante</code>.</p></li><li class="list__item" id="-d96pwi_32"><p><span class="control" id="-d96pwi_35">Detalles</span>: </p><ul class="list _bullet" id="-d96pwi_36"><li class="list__item" id="-d96pwi_37"><p>Se define un array de tres estudiantes con datos de ejemplo.</p></li><li class="list__item" id="-d96pwi_38"><p>Se abre un archivo binario utilizando <code class="code" id="-d96pwi_42">std::ofstream</code>.</p></li><li class="list__item" id="-d96pwi_39"><p>Se utiliza un bucle para escribir cada estructura en el archivo con la funci&oacute;n <code class="code" id="-d96pwi_43">write</code>.</p></li><li class="list__item" id="-d96pwi_40"><p><code class="code" id="-d96pwi_44">reinterpret_cast&lt;char*&gt;</code> convierte el puntero de la estructura a un puntero de tipo <code class="code" id="-d96pwi_45">char*</code>, necesario para escribir en el archivo binario.</p></li><li class="list__item" id="-d96pwi_41"><p>Se cierra el archivo despu&eacute;s de la escritura.</p></li></ul></li></ul></section><section class="chapter"><h3 id="3-funci-n-leerarchivobinario" data-toc="3-funci-n-leerarchivobinario">3. Funci&oacute;n <code class="code" id="-d96pwi_49">leerArchivoBinario</code></h3><div class="code-block" data-lang="none">
+void leerArchivoBinario(const char* nombreArchivo) {
+    std::ifstream archivo(nombreArchivo, std::ios::binary);
+    if (!archivo) {
+        std::cerr &lt;&lt; &quot;No se pudo abrir el archivo para lectura.&quot; &lt;&lt; std::endl;
+        return;
+    }
+
+    Estudiante estudiante;
+    while (archivo.read(reinterpret_cast&lt;char*&gt;(&amp;estudiante), sizeof(Estudiante))) {
+        std::cout &lt;&lt; &quot;Nombre: &quot; &lt;&lt; estudiante.nombre &lt;&lt; &quot;\nEdad: &quot; &lt;&lt; estudiante.edad &lt;&lt; &quot;\nCalificación: &quot; &lt;&lt; estudiante.calificacion &lt;&lt; std::endl;
+        std::cout &lt;&lt; &quot;-------------------&quot; &lt;&lt; std::endl;
+    }
+
+    archivo.close();
+}
+</div><ul class="list _bullet" id="-d96pwi_48"><li class="list__item" id="-d96pwi_50"><p><span class="control" id="-d96pwi_52">Prop&oacute;sito</span>: Leer el contenido de un archivo binario y mostrar la informaci&oacute;n almacenada.</p></li><li class="list__item" id="-d96pwi_51"><p><span class="control" id="-d96pwi_53">Detalles</span>: </p><ul class="list _bullet" id="-d96pwi_54"><li class="list__item" id="-d96pwi_55"><p>Abre el archivo binario utilizando <code class="code" id="-d96pwi_60">std::ifstream</code>.</p></li><li class="list__item" id="-d96pwi_56"><p>Usa un bucle <code class="code" id="-d96pwi_61">while</code> para leer cada registro (estructura <code class="code" id="-d96pwi_62">Estudiante</code>) del archivo hasta el final.</p></li><li class="list__item" id="-d96pwi_57"><p>La funci&oacute;n <code class="code" id="-d96pwi_63">read</code> se utiliza para leer los datos binarios del archivo y almacenarlos en la variable <code class="code" id="-d96pwi_64">estudiante</code>.</p></li><li class="list__item" id="-d96pwi_58"><p>Muestra la informaci&oacute;n de cada estudiante en la consola.</p></li><li class="list__item" id="-d96pwi_59"><p>Se cierra el archivo despu&eacute;s de la lectura.</p></li></ul></li></ul></section><section class="chapter"><h3 id="4-funci-n-modificararchivobinario" data-toc="4-funci-n-modificararchivobinario">4. Funci&oacute;n <code class="code" id="-d96pwi_68">modificarArchivoBinario</code></h3><div class="code-block" data-lang="none">
+void modificarArchivoBinario(const char* nombreArchivo) {
+    std::fstream archivo(nombreArchivo, std::ios::in | std::ios::out | std::ios::binary);
+    if (!archivo) {
+        std::cerr &lt;&lt; &quot;No se pudo abrir el archivo para modificación.&quot; &lt;&lt; std::endl;
+        return;
+    }
+
+    // Modificar la calificación del segundo estudiante (índice 1)
+    archivo.seekp(sizeof(Estudiante) + offsetof(Estudiante, calificacion), std::ios::beg);
+    float nuevaCalificacion = 95.0;
+    archivo.write(reinterpret_cast&lt;char*&gt;(&amp;nuevaCalificacion), sizeof(nuevaCalificacion));
+
+    archivo.close();
+}
+</div><ul class="list _bullet" id="-d96pwi_67"><li class="list__item" id="-d96pwi_69"><p><span class="control" id="-d96pwi_71">Prop&oacute;sito</span>: Modificar un valor espec&iacute;fico dentro del archivo binario sin reescribir todo el archivo.</p></li><li class="list__item" id="-d96pwi_70"><p><span class="control" id="-d96pwi_72">Detalles</span>: </p><ul class="list _bullet" id="-d96pwi_73"><li class="list__item" id="-d96pwi_74"><p>Abre el archivo binario en modo lectura/escritura utilizando <code class="code" id="-d96pwi_78">std::fstream</code>.</p></li><li class="list__item" id="-d96pwi_75"><p><code class="code" id="-d96pwi_79">seekp</code> mueve el puntero de escritura al campo <code class="code" id="-d96pwi_80">calificacion</code> del segundo estudiante en el archivo.</p></li><li class="list__item" id="-d96pwi_76"><p>La nueva calificaci&oacute;n (95.0) se escribe en la ubicaci&oacute;n especificada utilizando <code class="code" id="-d96pwi_81">write</code>.</p></li><li class="list__item" id="-d96pwi_77"><p>El archivo se cierra despu&eacute;s de la modificaci&oacute;n.</p></li></ul></li></ul></section><section class="chapter"><h3 id="5-funci-n-lecturaselectiva" data-toc="5-funci-n-lecturaselectiva">5. Funci&oacute;n <code class="code" id="-d96pwi_85">lecturaSelectiva</code></h3><div class="code-block" data-lang="none">
+void lecturaSelectiva(const char* nombreArchivo) {
+    std::ifstream archivo(nombreArchivo, std::ios::binary);
+    if (!archivo) {
+        std::cerr &lt;&lt; &quot;No se pudo abrir el archivo para lectura selectiva.&quot; &lt;&lt; std::endl;
+        return;
+    }
+
+    // Leer solo el segundo estudiante (índice 1)
+    archivo.seekg(sizeof(Estudiante), std::ios::beg);
+
+    Estudiante estudiante;
+    archivo.read(reinterpret_cast&lt;char*&gt;(&amp;estudiante), sizeof(Estudiante));
+
+    std::cout &lt;&lt; &quot;Lectura selectiva - Segundo Estudiante:&quot; &lt;&lt; std::endl;
+    std::cout &lt;&lt; &quot;Nombre: &quot; &lt;&lt; estudiante.nombre &lt;&lt; &quot;\nEdad: &quot; &lt;&lt; estudiante.edad &lt;&lt; &quot;\nCalificación: &quot; &lt;&lt; estudiante.calificacion &lt;&lt; std::endl;
+
+    archivo.close();
+}
+</div><ul class="list _bullet" id="-d96pwi_84"><li class="list__item" id="-d96pwi_86"><p><span class="control" id="-d96pwi_88">Prop&oacute;sito</span>: Leer un registro espec&iacute;fico del archivo binario sin cargar todo el archivo en memoria.</p></li><li class="list__item" id="-d96pwi_87"><p><span class="control" id="-d96pwi_89">Detalles</span>: </p><ul class="list _bullet" id="-d96pwi_90"><li class="list__item" id="-d96pwi_91"><p>Abre el archivo binario utilizando <code class="code" id="-d96pwi_95">std::ifstream</code>.</p></li><li class="list__item" id="-d96pwi_92"><p><code class="code" id="-d96pwi_96">seekg</code> mueve el puntero de lectura al inicio del segundo registro en el archivo.</p></li><li class="list__item" id="-d96pwi_93"><p>Lee y muestra solo la informaci&oacute;n del segundo estudiante utilizando <code class="code" id="-d96pwi_97">read</code>.</p></li><li class="list__item" id="-d96pwi_94"><p>Se cierra el archivo despu&eacute;s de la lectura selectiva.</p></li></ul></li></ul></section><section class="chapter"><h3 id="6-funci-n-main" data-toc="6-funci-n-main">6. Funci&oacute;n <code class="code" id="-d96pwi_101">main</code></h3><div class="code-block" data-lang="none">
+int main() {
+    const char* nombreArchivo = &quot;estudiantes.bin&quot;;
+
+    // 1. Escritura en archivo binario
+    escribirArchivoBinario(nombreArchivo);
+
+    // 2. Lectura del archivo binario
+    std::cout &lt;&lt; &quot;Contenido original del archivo binario:&quot; &lt;&lt; std::endl;
+    leerArchivoBinario(nombreArchivo);
+
+    // 3. Modificación del archivo binario
+    modificarArchivoBinario(nombreArchivo);
+
+    // 4. Lectura después de la modificación
+    std::cout &lt;&lt; &quot;Contenido del archivo binario después de la modificación:&quot; &lt;&lt; std::endl;
+    leerArchivoBinario(nombreArchivo);
+
+    // 5. Lectura selectiva
+    lecturaSelectiva(nombreArchivo);
+
+    return 0;
+}
+</div><ul class="list _bullet" id="-d96pwi_100"><li class="list__item" id="-d96pwi_102"><p><span class="control" id="-d96pwi_104">Prop&oacute;sito</span>: Coordinar la ejecuci&oacute;n de todas las funciones para realizar las operaciones en el archivo binario.</p></li><li class="list__item" id="-d96pwi_103"><p><span class="control" id="-d96pwi_105">Detalles</span>: </p><ul class="list _bullet" id="-d96pwi_106"><li class="list__item" id="-d96pwi_107"><p>Se llama a <code class="code" id="-d96pwi_112">escribirArchivoBinario</code> para crear y escribir los datos en el archivo binario.</p></li><li class="list__item" id="-d96pwi_108"><p>Luego, se llama a <code class="code" id="-d96pwi_113">leerArchivoBinario</code> para leer y mostrar el contenido original del archivo.</p></li><li class="list__item" id="-d96pwi_109"><p>Se llama a <code class="code" id="-d96pwi_114">modificarArchivoBinario</code> para modificar la calificaci&oacute;n del segundo estudiante.</p></li><li class="list__item" id="-d96pwi_110"><p><code class="code" id="-d96pwi_115">leerArchivoBinario</code> se llama nuevamente para mostrar el contenido del archivo despu&eacute;s de la modificaci&oacute;n.</p></li><li class="list__item" id="-d96pwi_111"><p>Finalmente, se llama a <code class="code" id="-d96pwi_116">lecturaSelectiva</code> para mostrar solo el segundo estudiante.</p></li></ul></li></ul></section></section><section class="chapter"><h2 id="conclusi-n" data-toc="conclusi-n">Conclusi&oacute;n</h2><p id="-d96pwi_117">Este ejemplo demuestra c&oacute;mo manejar un archivo binario completo en C++, desde la creaci&oacute;n y escritura inicial, hasta la lectura, modificaci&oacute;n, y lectura selectiva. Estas operaciones son fundamentales para trabajar eficientemente con archivos binarios, especialmente en aplicaciones que requieren la manipulaci&oacute;n de grandes vol&uacute;menes de datos o registros estructurados.</p></section><div class="last-modified">Last modified: 19 agosto 2024</div><div data-feedback-placeholder="true"></div><div class="navigation-links _bottom"><a href="archivos-binarios.html" class="navigation-links__prev">Archivos en C++: Enfoque en Archivos Binarios</a><a href="archivos-de-texto.html" class="navigation-links__next">Gesti&oacute;n de Archivos de Texto en C++: Desde lo B&aacute;sico hasta lo Avanzado</a></div></article><div id="disqus_thread"></div></div></section></main></div><script src="https://resources.jetbrains.com/writerside/apidoc/6.10.0-b408/app.js"></script></body></html>

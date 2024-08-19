@@ -1,0 +1,198 @@
+<!DOCTYPE html SYSTEM "about:legacy-compat">
+<html lang="en-US" data-preset="contrast" data-primary-color="#307FFF"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta charset="UTF-8"><meta name="robots" content="noindex"><meta name="built-on" content="2024-08-19T14:46:06.666283662"><title>Ejemplo Avanzado de Apuntadores Complejos en C++ | Instance Name</title><script type="application/json" id="virtual-toc-data">[{"id":"enunciado-del-problema","level":0,"title":"Enunciado del Problema","anchor":"#enunciado-del-problema"},{"id":"c-digo-completo","level":0,"title":"Código Completo","anchor":"#c-digo-completo"},{"id":"explicaci-n-del-c-digo","level":0,"title":"Explicación del Código","anchor":"#explicaci-n-del-c-digo"},{"id":"ejecuci-n-del-c-digo","level":0,"title":"Ejecución del Código","anchor":"#ejecuci-n-del-c-digo"}]</script><script type="application/json" id="topic-shortcuts"></script><link href="https://resources.jetbrains.com/writerside/apidoc/6.10.0-b408/app.css" rel="stylesheet"><meta name="msapplication-TileColor" content="#000000"><link rel="apple-touch-icon" sizes="180x180" href="https://jetbrains.com/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="https://jetbrains.com/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="https://jetbrains.com/favicon-16x16.png"><meta name="msapplication-TileImage" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-144x144.png"><meta name="msapplication-square70x70logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-70x70.png"><meta name="msapplication-square150x150logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-150x150.png"><meta name="msapplication-wide310x150logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-310x150.png"><meta name="msapplication-square310x310logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-310x310.png"><meta name="image" content=""><!-- Open Graph --><meta property="og:title" content="Ejemplo Avanzado de Apuntadores Complejos en C++ | Instance Name"><meta property="og:description" content=""><meta property="og:image" content=""><meta property="og:site_name" content="Instance Name Help"><meta property="og:type" content="website"><meta property="og:locale" content="en_US"><meta property="og:url" content="writerside-documentation/apuntadores-complejos.html"><!-- End Open Graph --><!-- Twitter Card --><meta name="twitter:card" content="summary_large_image"><meta name="twitter:site" content=""><meta name="twitter:title" content="Ejemplo Avanzado de Apuntadores Complejos en C++ | Instance Name"><meta name="twitter:description" content=""><meta name="twitter:creator" content=""><meta name="twitter:image:src" content=""><!-- End Twitter Card --><!-- Schema.org WebPage --><script type="application/ld+json">{
+    "@context": "http://schema.org",
+    "@type": "WebPage",
+    "@id": "writerside-documentation/apuntadores-complejos.html#webpage",
+    "url": "writerside-documentation/apuntadores-complejos.html",
+    "name": "Ejemplo Avanzado de Apuntadores Complejos en C++ | Instance Name",
+    "description": "",
+    "image": "",
+    "inLanguage":"en-US"
+}</script><!-- End Schema.org --><!-- Schema.org WebSite --><script type="application/ld+json">{
+    "@type": "WebSite",
+    "@id": "writerside-documentation/#website",
+    "url": "writerside-documentation/",
+    "name": "Instance Name Help"
+}</script><!-- End Schema.org --></head><body data-id="Apuntadores-Complejos" data-main-title="Ejemplo Avanzado de Apuntadores Complejos en C++" data-article-props="{&quot;seeAlsoStyle&quot;:&quot;links&quot;}" data-template="article" data-breadcrumbs=""><div class="wrapper"><main class="panel _main"><header class="panel__header"><div class="container"><h3>Instance Name  Help</h3><div class="panel-trigger"></div></div></header><section class="panel__content"><div class="container"><article class="article" data-shortcut-switcher="inactive"><h1 data-toc="Apuntadores-Complejos" id="Apuntadores-Complejos.md">Ejemplo Avanzado de Apuntadores Complejos en C++</h1><section class="chapter"><h2 id="enunciado-del-problema" data-toc="enunciado-del-problema">Enunciado del Problema</h2><p id="-i3hd0_7">Implementaremos un sistema de gesti&oacute;n de empleados con las siguientes caracter&iacute;sticas avanzadas:</p><ul class="list _bullet" id="-i3hd0_8"><li class="list__item" id="-i3hd0_10"><p><span class="control" id="-i3hd0_13">M&uacute;ltiples tipos de tareas</span>: Los empleados pueden realizar diferentes tareas que se asignan din&aacute;micamente.</p></li><li class="list__item" id="-i3hd0_11"><p><span class="control" id="-i3hd0_14">Apuntadores a funciones miembro</span>: Se utilizan para asignar y ejecutar diferentes tareas.</p></li><li class="list__item" id="-i3hd0_12"><p><span class="control" id="-i3hd0_15">Combinaci&oacute;n de <code class="code" id="-i3hd0_16">std::unique_ptr</code> y <code class="code" id="-i3hd0_17">std::shared_ptr</code></span> para demostrar la gesti&oacute;n avanzada de memoria en C++.</p></li></ul><p id="-i3hd0_9">El sistema debe permitir agregar empleados, asignarles tareas espec&iacute;ficas, y ejecutar esas tareas de manera flexible.</p></section><section class="chapter"><h2 id="c-digo-completo" data-toc="c-digo-completo">C&oacute;digo Completo</h2><div class="code-block" data-lang="none">
+#include &lt;iostream&gt;
+#include &lt;memory&gt;
+#include &lt;vector&gt;
+#include &lt;string&gt;
+
+// Clase base para todos los empleados
+class Empleado {
+public:
+    virtual void realizarTarea() const = 0; // Función virtual pura
+    virtual void tareaEspecifica1() const = 0;
+    virtual void tareaEspecifica2() const = 0;
+    virtual ~Empleado() {}
+};
+
+// Clase para empleados desarrolladores
+class Desarrollador : public Empleado {
+public:
+    void realizarTarea() const override {
+        std::cout &lt;&lt; &quot;El desarrollador está escribiendo código.&quot; &lt;&lt; std::endl;
+    }
+    
+    void tareaEspecifica1() const override {
+        std::cout &lt;&lt; &quot;El desarrollador está depurando código.&quot; &lt;&lt; std::endl;
+    }
+    
+    void tareaEspecifica2() const override {
+        std::cout &lt;&lt; &quot;El desarrollador está participando en una revisión de código.&quot; &lt;&lt; std::endl;
+    }
+};
+
+// Clase para empleados de recursos humanos
+class RecursosHumanos : public Empleado {
+public:
+    void realizarTarea() const override {
+        std::cout &lt;&lt; &quot;Recursos Humanos está gestionando el personal.&quot; &lt;&lt; std::endl;
+    }
+    
+    void tareaEspecifica1() const override {
+        std::cout &lt;&lt; &quot;Recursos Humanos está organizando una entrevista.&quot; &lt;&lt; std::endl;
+    }
+    
+    void tareaEspecifica2() const override {
+        std::cout &lt;&lt; &quot;Recursos Humanos está evaluando el desempeño del personal.&quot; &lt;&lt; std::endl;
+    }
+};
+
+// Clase para gestionar empleados
+class GestorEmpleados {
+public:
+    void agregarEmpleado(std::shared_ptr&lt;Empleado&gt; empleado) {
+        empleados.push_back(empleado);
+    }
+
+    void asignarTareas() const {
+        for (const auto&amp; empleado : empleados) {
+            empleado-&gt;realizarTarea();
+            (empleado.get()-&gt;*ptrTareaEspecifica1)();
+            (empleado.get()-&gt;*ptrTareaEspecifica2)();
+        }
+    }
+
+    void setTareas(void (Empleado::*tarea1)() const, void (Empleado::*tarea2)() const) {
+        ptrTareaEspecifica1 = tarea1;
+        ptrTareaEspecifica2 = tarea2;
+    }
+
+private:
+    std::vector&lt;std::shared_ptr&lt;Empleado&gt;&gt; empleados; // Uso de std::shared_ptr
+    void (Empleado::*ptrTareaEspecifica1)() const; // Apuntador a función miembro
+    void (Empleado::*ptrTareaEspecifica2)() const; // Apuntador a función miembro
+};
+
+int main() {
+    GestorEmpleados gestor;
+
+    // Creación de empleados usando std::make_shared
+    auto desarrollador = std::make_shared&lt;Desarrollador&gt;();
+    auto recursosHumanos = std::make_shared&lt;RecursosHumanos&gt;();
+
+    // Agregar empleados al gestor
+    gestor.agregarEmpleado(desarrollador);
+    gestor.agregarEmpleado(recursosHumanos);
+
+    // Asignar tareas específicas
+    gestor.setTareas(&amp;Empleado::tareaEspecifica1, &amp;Empleado::tareaEspecifica2);
+
+    // Asignar tareas a todos los empleados
+    gestor.asignarTareas();
+
+    return 0;
+}
+</div></section><section class="chapter"><h2 id="explicaci-n-del-c-digo" data-toc="explicaci-n-del-c-digo">Explicaci&oacute;n del C&oacute;digo</h2><section class="chapter"><h3 id="1-clase-base-empleado-con-apuntadores-a-m-ltiples-funciones-miembro" data-toc="1-clase-base-empleado-con-apuntadores-a-m-ltiples-funciones-miembro">1. Clase Base <code class="code" id="-i3hd0_26">Empleado</code> con Apuntadores a M&uacute;ltiples Funciones Miembro</h3><div class="code-block" data-lang="none">
+class Empleado {
+public:
+    virtual void realizarTarea() const = 0; // Función virtual pura
+    virtual void tareaEspecifica1() const = 0;
+    virtual void tareaEspecifica2() const = 0;
+    virtual ~Empleado() {}
+};
+</div><ul class="list _bullet" id="-i3hd0_25"><li class="list__item" id="-i3hd0_27"><p><span class="control" id="-i3hd0_28">Empleado</span>: La clase base define funciones virtuales puras para <code class="code" id="-i3hd0_29">realizarTarea</code> y dos tareas espec&iacute;ficas (<code class="code" id="-i3hd0_30">tareaEspecifica1</code> y <code class="code" id="-i3hd0_31">tareaEspecifica2</code>), que las clases derivadas deben implementar.</p></li></ul></section><section class="chapter"><h3 id="2-clases-derivadas-desarrollador-y-recursoshumanos" data-toc="2-clases-derivadas-desarrollador-y-recursoshumanos">2. Clases Derivadas <code class="code" id="-i3hd0_35">Desarrollador</code> y <code class="code" id="-i3hd0_36">RecursosHumanos</code></h3><div class="code-block" data-lang="none">
+class Desarrollador : public Empleado {
+public:
+    void realizarTarea() const override {
+        std::cout &lt;&lt; &quot;El desarrollador está escribiendo código.&quot; &lt;&lt; std::endl;
+    }
+    
+    void tareaEspecifica1() const override {
+        std::cout &lt;&lt; &quot;El desarrollador está depurando código.&quot; &lt;&lt; std::endl;
+    }
+    
+    void tareaEspecifica2() const override {
+        std::cout &lt;&lt; &quot;El desarrollador está participando en una revisión de código.&quot; &lt;&lt; std::endl;
+    }
+};
+
+class RecursosHumanos : public Empleado {
+public:
+    void realizarTarea() const override {
+        std::cout &lt;&lt; &quot;Recursos Humanos está gestionando el personal.&quot; &lt;&lt; std::endl;
+    }
+    
+    void tareaEspecifica1() const override {
+        std::cout &lt;&lt; &quot;Recursos Humanos está organizando una entrevista.&quot; &lt;&lt; std::endl;
+    }
+    
+    void tareaEspecifica2() const override {
+        std::cout &lt;&lt; &quot;Recursos Humanos está evaluando el desempeño del personal.&quot; &lt;&lt; std::endl;
+    }
+};
+</div><ul class="list _bullet" id="-i3hd0_34"><li class="list__item" id="-i3hd0_37"><p><span class="control" id="-i3hd0_38">Desarrollador</span> y <span class="control" id="-i3hd0_39">RecursosHumanos</span>: Implementan las tareas espec&iacute;ficas que corresponden a cada tipo de empleado.</p></li></ul></section><section class="chapter"><h3 id="3-clase-gestorempleados-con-apuntadores-a-funciones-miembro" data-toc="3-clase-gestorempleados-con-apuntadores-a-funciones-miembro">3. Clase <code class="code" id="-i3hd0_43">GestorEmpleados</code> con Apuntadores a Funciones Miembro</h3><div class="code-block" data-lang="none">
+class GestorEmpleados {
+public:
+    void agregarEmpleado(std::shared_ptr&lt;Empleado&gt; empleado) {
+        empleados.push_back(empleado);
+    }
+
+    void asignarTareas() const {
+        for (const auto&amp; empleado : empleados) {
+            empleado-&gt;realizarTarea();
+            (empleado.get()-&gt;*ptrTareaEspecifica1)();
+            (empleado.get()-&gt;*ptrTareaEspecifica2)();
+        }
+    }
+
+    void setTareas(void (Empleado::*tarea1)() const, void (Empleado::*tarea2)() const) {
+        ptrTareaEspecifica1 = tarea1;
+        ptrTareaEspecifica2 = tarea2;
+    }
+
+private:
+    std::vector&lt;std::shared_ptr&lt;Empleado&gt;&gt; empleados; // Uso de std::shared_ptr
+    void (Empleado::*ptrTareaEspecifica1)() const; // Apuntador a función miembro
+    void (Empleado::*ptrTareaEspecifica2)() const; // Apuntador a función miembro
+};
+</div><ul class="list _bullet" id="-i3hd0_42"><li class="list__item" id="-i3hd0_44"><p><span class="control" id="-i3hd0_45">GestorEmpleados</span>: Esta clase ahora maneja apuntadores a funciones miembro (<code class="code" id="-i3hd0_46">ptrTareaEspecifica1</code> y <code class="code" id="-i3hd0_47">ptrTareaEspecifica2</code>). Estos apuntadores se utilizan para asignar din&aacute;micamente diferentes tareas a los empleados.</p></li></ul></section><section class="chapter"><h3 id="4-funci-n-principal-main" data-toc="4-funci-n-principal-main">4. Funci&oacute;n Principal <code class="code" id="-i3hd0_51">main</code></h3><div class="code-block" data-lang="none">
+int main() {
+    GestorEmpleados gestor;
+
+    // Creación de empleados usando std::make_shared
+    auto desarrollador = std::make_shared&lt;Desarrollador&gt;();
+    auto recursosHumanos = std::make_shared&lt;RecursosHumanos&gt;();
+
+    // Agregar empleados al gestor
+    gestor.agregarEmpleado(desarrollador);
+    gestor.agregarEmpleado(recursosHumanos);
+
+    // Asignar tareas específicas
+    gestor.setTareas(&amp;Empleado::tareaEspecifica1, &amp;Empleado::tareaEspecifica2);
+
+    // Asignar tareas a todos los empleados
+    gestor.asignarTareas();
+
+    return 0;
+}
+</div><ul class="list _bullet" id="-i3hd0_50"><li class="list__item" id="-i3hd0_52"><p><span class="control" id="-i3hd0_53">Asignaci&oacute;n Din&aacute;mica de Tareas</span>: Se asignan dos tareas espec&iacute;ficas a todos los empleados usando apuntadores a funciones miembro. Las tareas se ejecutan din&aacute;micamente para cada empleado.</p></li></ul></section></section><section class="chapter"><h2 id="ejecuci-n-del-c-digo" data-toc="ejecuci-n-del-c-digo">Ejecuci&oacute;n del C&oacute;digo</h2><p id="-i3hd0_54">Al ejecutar el c&oacute;digo, deber&iacute;as obtener una salida similar a esta:</p><div class="code-block" data-lang="none">
+El desarrollador está escribiendo código.
+El desarrollador está depurando código.
+El desarrollador está participando en una revisión de código.
+Recursos Humanos está gestionando el personal.
+Recursos Humanos está organizando una entrevista.
+Recursos Humanos está evaluando el desempeño del personal.
+</div><p id="-i3hd0_56">Este ejemplo demuestra un uso m&aacute;s avanzado de apuntadores en C++, incluyendo la asignaci&oacute;n din&aacute;mica de tareas a trav&eacute;s de apuntadores a funciones miembro, y el manejo de la memoria con <code class="code" id="-i3hd0_57">std::shared_ptr</code>. Es un ejemplo representativo de c&oacute;mo se pueden utilizar estos conceptos en aplicaciones complejas en el mundo real.</p></section><div class="last-modified">Last modified: 19 agosto 2024</div><div data-feedback-placeholder="true"></div><div class="navigation-links _bottom"><a href="ejercicio-clasificacion.html" class="navigation-links__prev">Ejemplo de Aplicaci&oacute;n: Implementaci&oacute;n B&aacute;sica del Algoritmo k-NN en C++</a><a href="ejemplo-apuntadores-ii.html" class="navigation-links__next">Ejemplo de Aplicaci&oacute;n: Sistema de Gesti&oacute;n de Empleados con Apuntadores Complejos en C++</a></div></article><div id="disqus_thread"></div></div></section></main></div><script src="https://resources.jetbrains.com/writerside/apidoc/6.10.0-b408/app.js"></script></body></html>

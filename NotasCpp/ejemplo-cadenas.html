@@ -1,0 +1,71 @@
+<!DOCTYPE html SYSTEM "about:legacy-compat">
+<html lang="en-US" data-preset="contrast" data-primary-color="#307FFF"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta charset="UTF-8"><meta name="robots" content="noindex"><meta name="built-on" content="2024-08-19T14:46:06.63481184"><title>Ejemplo Combinado: Uso de `std::string` y Apuntadores Din&aacute;micos en C++ | Instance Name</title><script type="application/json" id="virtual-toc-data">[{"id":"c-digo","level":0,"title":"Código","anchor":"#c-digo"},{"id":"explicaci-n-del-c-digo","level":0,"title":"Explicación del Código","anchor":"#explicaci-n-del-c-digo"},{"id":"resultado-esperado","level":0,"title":"Resultado Esperado","anchor":"#resultado-esperado"},{"id":"comparaci-n","level":0,"title":"Comparación","anchor":"#comparaci-n"}]</script><script type="application/json" id="topic-shortcuts"></script><link href="https://resources.jetbrains.com/writerside/apidoc/6.10.0-b408/app.css" rel="stylesheet"><meta name="msapplication-TileColor" content="#000000"><link rel="apple-touch-icon" sizes="180x180" href="https://jetbrains.com/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="https://jetbrains.com/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="https://jetbrains.com/favicon-16x16.png"><meta name="msapplication-TileImage" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-144x144.png"><meta name="msapplication-square70x70logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-70x70.png"><meta name="msapplication-square150x150logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-150x150.png"><meta name="msapplication-wide310x150logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-310x150.png"><meta name="msapplication-square310x310logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-310x310.png"><meta name="image" content=""><!-- Open Graph --><meta property="og:title" content="Ejemplo Combinado: Uso de `std::string` y Apuntadores Din&aacute;micos en C++ | Instance Name"><meta property="og:description" content=""><meta property="og:image" content=""><meta property="og:site_name" content="Instance Name Help"><meta property="og:type" content="website"><meta property="og:locale" content="en_US"><meta property="og:url" content="writerside-documentation/ejemplo-cadenas.html"><!-- End Open Graph --><!-- Twitter Card --><meta name="twitter:card" content="summary_large_image"><meta name="twitter:site" content=""><meta name="twitter:title" content="Ejemplo Combinado: Uso de `std::string` y Apuntadores Din&aacute;micos en C++ | Instance Name"><meta name="twitter:description" content=""><meta name="twitter:creator" content=""><meta name="twitter:image:src" content=""><!-- End Twitter Card --><!-- Schema.org WebPage --><script type="application/ld+json">{
+    "@context": "http://schema.org",
+    "@type": "WebPage",
+    "@id": "writerside-documentation/ejemplo-cadenas.html#webpage",
+    "url": "writerside-documentation/ejemplo-cadenas.html",
+    "name": "Ejemplo Combinado: Uso de `std::string` y Apuntadores Din&aacute;micos en C++ | Instance Name",
+    "description": "",
+    "image": "",
+    "inLanguage":"en-US"
+}</script><!-- End Schema.org --><!-- Schema.org WebSite --><script type="application/ld+json">{
+    "@type": "WebSite",
+    "@id": "writerside-documentation/#website",
+    "url": "writerside-documentation/",
+    "name": "Instance Name Help"
+}</script><!-- End Schema.org --></head><body data-id="Ejemplo-Cadenas" data-main-title="Ejemplo Combinado: Uso de `std::string` y Apuntadores Dinámicos en C++" data-article-props="{&quot;seeAlsoStyle&quot;:&quot;links&quot;}" data-template="article" data-breadcrumbs=""><div class="wrapper"><main class="panel _main"><header class="panel__header"><div class="container"><h3>Instance Name  Help</h3><div class="panel-trigger"></div></div></header><section class="panel__content"><div class="container"><article class="article" data-shortcut-switcher="inactive"><h1 data-toc="Ejemplo-Cadenas" id="Ejemplo-Cadenas.md">Ejemplo Combinado: Uso de `std::string` y Apuntadores Dinámicos en C++</h1><p id="-8wgeh1_3">A continuaci&oacute;n se presenta un ejemplo en el que se manejan cadenas de caracteres utilizando tanto <code class="code" id="-8wgeh1_9">std::string</code> como apuntadores din&aacute;micos (<code class="code" id="-8wgeh1_10">char*</code>). El ejemplo realiza la misma operaci&oacute;n: invertir una cadena de caracteres y comparar la cadena original con su versi&oacute;n invertida para determinar si es un pal&iacute;ndromo.</p><section class="chapter"><h2 id="c-digo" data-toc="c-digo">C&oacute;digo</h2><div class="code-block" data-lang="none">
+#include &lt;iostream&gt;
+#include &lt;cstring&gt;
+#include &lt;string&gt;
+#include &lt;algorithm&gt;
+
+// Versión con std::string
+bool esPalindromoString(const std::string&amp; cadena) {
+    std::string invertida = cadena;
+    std::reverse(invertida.begin(), invertida.end()); // Invertir la cadena
+    return cadena == invertida;
+}
+
+// Versión con apuntadores dinámicos
+bool esPalindromoChar(const char* cadena) {
+    int longitud = std::strlen(cadena);
+    char* invertida = new char[longitud + 1]; // +1 para el carácter nulo
+
+    // Invertir la cadena
+    for (int i = 0; i &lt; longitud; ++i) {
+        invertida[i] = cadena[longitud - 1 - i];
+    }
+    invertida[longitud] = '\0'; // Terminar la cadena con el carácter nulo
+
+    bool resultado = std::strcmp(cadena, invertida) == 0;
+
+    delete[] invertida; // Liberar memoria
+    return resultado;
+}
+
+int main() {
+    std::string cadenaString;
+    char cadenaChar[100];
+
+    std::cout &lt;&lt; &quot;Ingrese una cadena (para std::string y char*): &quot;;
+    std::getline(std::cin, cadenaString); // Leer cadena en std::string
+
+    std::strcpy(cadenaChar, cadenaString.c_str()); // Copiar la cadena a char*
+
+    // Verificación usando std::string
+    if (esPalindromoString(cadenaString)) {
+        std::cout &lt;&lt; &quot;[std::string] La cadena es un palíndromo.&quot; &lt;&lt; std::endl;
+    } else {
+        std::cout &lt;&lt; &quot;[std::string] La cadena no es un palíndromo.&quot; &lt;&lt; std::endl;
+    }
+
+    // Verificación usando apuntadores dinámicos
+    if (esPalindromoChar(cadenaChar)) {
+        std::cout &lt;&lt; &quot;[char*] La cadena es un palíndromo.&quot; &lt;&lt; std::endl;
+    } else {
+        std::cout &lt;&lt; &quot;[char*] La cadena no es un palíndromo.&quot; &lt;&lt; std::endl;
+    }
+
+    return 0;
+}
+</div></section><section class="chapter"><h2 id="explicaci-n-del-c-digo" data-toc="explicaci-n-del-c-digo">Explicaci&oacute;n del C&oacute;digo</h2><ol class="list _decimal" id="-8wgeh1_12" type="1"><li class="list__item" id="-8wgeh1_13"><p id="-8wgeh1_16"><span class="control" id="-8wgeh1_18">Funci&oacute;n <code class="code" id="-8wgeh1_19">esPalindromoString</code></span>:</p><ul class="list _bullet" id="-8wgeh1_17"><li class="list__item" id="-8wgeh1_20"><p>Utiliza <code class="code" id="-8wgeh1_23">std::string</code> para manejar la cadena.</p></li><li class="list__item" id="-8wgeh1_21"><p>Invierte la cadena utilizando <code class="code" id="-8wgeh1_24">std::reverse</code> de la STL.</p></li><li class="list__item" id="-8wgeh1_22"><p>Compara la cadena original con la invertida para determinar si es un pal&iacute;ndromo.</p></li></ul></li><li class="list__item" id="-8wgeh1_14"><p id="-8wgeh1_25"><span class="control" id="-8wgeh1_27">Funci&oacute;n <code class="code" id="-8wgeh1_28">esPalindromoChar</code></span>:</p><ul class="list _bullet" id="-8wgeh1_26"><li class="list__item" id="-8wgeh1_29"><p>Utiliza apuntadores din&aacute;micos (<code class="code" id="-8wgeh1_32">char*</code>) para manejar la cadena.</p></li><li class="list__item" id="-8wgeh1_30"><p>Invierte la cadena manualmente en un nuevo arreglo de caracteres.</p></li><li class="list__item" id="-8wgeh1_31"><p>Compara la cadena original con la invertida utilizando <code class="code" id="-8wgeh1_33">std::strcmp</code>.</p></li></ul></li><li class="list__item" id="-8wgeh1_15"><p id="-8wgeh1_34"><span class="control" id="-8wgeh1_36">Funci&oacute;n Principal <code class="code" id="-8wgeh1_37">main</code></span>:</p><ul class="list _bullet" id="-8wgeh1_35"><li class="list__item" id="-8wgeh1_38"><p>Se solicita al usuario que ingrese una cadena de caracteres.</p></li><li class="list__item" id="-8wgeh1_39"><p>La cadena se maneja tanto como <code class="code" id="-8wgeh1_42">std::string</code> como <code class="code" id="-8wgeh1_43">char*</code>.</p></li><li class="list__item" id="-8wgeh1_40"><p>Se llama a ambas versiones de la funci&oacute;n para verificar si la cadena es un pal&iacute;ndromo.</p></li><li class="list__item" id="-8wgeh1_41"><p>Se imprime el resultado para cada versi&oacute;n.</p></li></ul></li></ol></section><section class="chapter"><h2 id="resultado-esperado" data-toc="resultado-esperado">Resultado Esperado</h2><p id="-8wgeh1_44">Al ejecutar este programa, obtendr&aacute;s dos resultados para la misma operaci&oacute;n: uno utilizando <code class="code" id="-8wgeh1_45">std::string</code> y otro utilizando apuntadores din&aacute;micos. Ambos enfoques deben arrojar el mismo resultado sobre si la cadena es un pal&iacute;ndromo o no, pero con diferentes m&eacute;todos de implementaci&oacute;n.</p></section><section class="chapter"><h2 id="comparaci-n" data-toc="comparaci-n">Comparaci&oacute;n</h2><p id="-8wgeh1_46">Este ejemplo muestra c&oacute;mo se puede lograr la misma funcionalidad con ambos enfoques. Usar <code class="code" id="-8wgeh1_47">std::string</code> simplifica el manejo de cadenas al abstraer la gesti&oacute;n de memoria y proporcionar m&eacute;todos f&aacute;ciles de usar. Por otro lado, utilizar apuntadores din&aacute;micos (<code class="code" id="-8wgeh1_48">char*</code>) da un control m&aacute;s directo sobre la memoria, pero requiere una gesti&oacute;n m&aacute;s cuidadosa y detallada.</p></section><div class="last-modified">Last modified: 19 agosto 2024</div><div data-feedback-placeholder="true"></div><div class="navigation-links _bottom"><a href="cadena-caracteres.html" class="navigation-links__prev">Cadenas de Caracteres en C++: Desde lo B&aacute;sico hasta el Uso Avanzado de Apuntadores Din&aacute;micos</a><a href="archivos-binarios.html" class="navigation-links__next">Archivos en C++: Enfoque en Archivos Binarios</a></div></article><div id="disqus_thread"></div></div></section></main></div><script src="https://resources.jetbrains.com/writerside/apidoc/6.10.0-b408/app.js"></script></body></html>

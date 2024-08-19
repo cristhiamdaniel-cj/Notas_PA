@@ -1,0 +1,168 @@
+<!DOCTYPE html SYSTEM "about:legacy-compat">
+<html lang="en-US" data-preset="contrast" data-primary-color="#307FFF"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta charset="UTF-8"><meta name="robots" content="noindex"><meta name="built-on" content="2024-08-19T14:46:06.63347293"><title>Ejemplo de Aplicaci&oacute;n: Implementaci&oacute;n B&aacute;sica del Algoritmo k-NN en C++ | Instance Name</title><script type="application/json" id="virtual-toc-data">[{"id":"enunciado-del-problema","level":0,"title":"Enunciado del Problema","anchor":"#enunciado-del-problema"},{"id":"c-digo-completo","level":0,"title":"Código Completo","anchor":"#c-digo-completo"},{"id":"explicaci-n-del-c-digo","level":0,"title":"Explicación del Código","anchor":"#explicaci-n-del-c-digo"},{"id":"conclusi-n","level":0,"title":"Conclusión","anchor":"#conclusi-n"}]</script><script type="application/json" id="topic-shortcuts"></script><link href="https://resources.jetbrains.com/writerside/apidoc/6.10.0-b408/app.css" rel="stylesheet"><meta name="msapplication-TileColor" content="#000000"><link rel="apple-touch-icon" sizes="180x180" href="https://jetbrains.com/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="https://jetbrains.com/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="https://jetbrains.com/favicon-16x16.png"><meta name="msapplication-TileImage" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-144x144.png"><meta name="msapplication-square70x70logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-70x70.png"><meta name="msapplication-square150x150logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-150x150.png"><meta name="msapplication-wide310x150logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-310x150.png"><meta name="msapplication-square310x310logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-310x310.png"><meta name="image" content=""><!-- Open Graph --><meta property="og:title" content="Ejemplo de Aplicaci&oacute;n: Implementaci&oacute;n B&aacute;sica del Algoritmo k-NN en C++ | Instance Name"><meta property="og:description" content=""><meta property="og:image" content=""><meta property="og:site_name" content="Instance Name Help"><meta property="og:type" content="website"><meta property="og:locale" content="en_US"><meta property="og:url" content="writerside-documentation/ejercicio-clasificacion.html"><!-- End Open Graph --><!-- Twitter Card --><meta name="twitter:card" content="summary_large_image"><meta name="twitter:site" content=""><meta name="twitter:title" content="Ejemplo de Aplicaci&oacute;n: Implementaci&oacute;n B&aacute;sica del Algoritmo k-NN en C++ | Instance Name"><meta name="twitter:description" content=""><meta name="twitter:creator" content=""><meta name="twitter:image:src" content=""><!-- End Twitter Card --><!-- Schema.org WebPage --><script type="application/ld+json">{
+    "@context": "http://schema.org",
+    "@type": "WebPage",
+    "@id": "writerside-documentation/ejercicio-clasificacion.html#webpage",
+    "url": "writerside-documentation/ejercicio-clasificacion.html",
+    "name": "Ejemplo de Aplicaci&oacute;n: Implementaci&oacute;n B&aacute;sica del Algoritmo k-NN en C++ | Instance Name",
+    "description": "",
+    "image": "",
+    "inLanguage":"en-US"
+}</script><!-- End Schema.org --><!-- Schema.org WebSite --><script type="application/ld+json">{
+    "@type": "WebSite",
+    "@id": "writerside-documentation/#website",
+    "url": "writerside-documentation/",
+    "name": "Instance Name Help"
+}</script><!-- End Schema.org --></head><body data-id="Ejercicio-Clasificacion" data-main-title="Ejemplo de Aplicación: Implementación Básica del Algoritmo k-NN en C++" data-article-props="{&quot;seeAlsoStyle&quot;:&quot;links&quot;}" data-template="article" data-breadcrumbs=""><div class="wrapper"><main class="panel _main"><header class="panel__header"><div class="container"><h3>Instance Name  Help</h3><div class="panel-trigger"></div></div></header><section class="panel__content"><div class="container"><article class="article" data-shortcut-switcher="inactive"><h1 data-toc="Ejercicio-Clasificacion" id="Ejercicio-Clasificacion.md">Ejemplo de Aplicación: Implementación Básica del Algoritmo k-NN en C++</h1><section class="chapter"><h2 id="enunciado-del-problema" data-toc="enunciado-del-problema">Enunciado del Problema</h2><p id="e25et9_7">Se desea implementar el algoritmo de k-Nearest Neighbors (k-NN) para clasificar un conjunto de puntos en el espacio 2D. Dado un conjunto de puntos etiquetados, el algoritmo debe predecir la clase de un nuevo punto en funci&oacute;n de las clases de sus <code class="code" id="e25et9_10">k</code> vecinos m&aacute;s cercanos.</p><p id="e25et9_8">Utilizaremos:</p><ul class="list _bullet" id="e25et9_9"><li class="list__item" id="e25et9_11"><p><span class="control" id="e25et9_14">Estructuras (<code class="code" id="e25et9_15">structs</code>)</span> para representar puntos y clasificaciones.</p></li><li class="list__item" id="e25et9_12"><p><span class="control" id="e25et9_16">Arreglos Din&aacute;micos</span> para manejar un n&uacute;mero variable de puntos.</p></li><li class="list__item" id="e25et9_13"><p><span class="control" id="e25et9_17">Apuntadores</span> para acceder y manipular din&aacute;micamente la memoria.</p></li></ul></section><section class="chapter"><h2 id="c-digo-completo" data-toc="c-digo-completo">C&oacute;digo Completo</h2><div class="code-block" data-lang="none">
+#include &lt;iostream&gt;
+#include &lt;cmath&gt;
+#include &lt;vector&gt;
+#include &lt;algorithm&gt; // Necesario para std::sort
+
+// Estructura para almacenar un punto en el espacio 2D con su etiqueta
+struct Punto {
+    double x;
+    double y;
+    int etiqueta; // 0 o 1
+};
+
+// Función para calcular la distancia euclidiana entre dos puntos
+double calcularDistancia(const Punto* p1, const Punto* p2) {
+    return std::sqrt(std::pow(p1-&gt;x - p2-&gt;x, 2) + std::pow(p1-&gt;y - p2-&gt;y, 2));
+}
+
+// Función para encontrar los k vecinos más cercanos
+int kNN(Punto* puntos, int n, Punto* nuevo, int k) {
+    std::vector&lt;std::pair&lt;double, int&gt;&gt; distancias; // Vector para almacenar distancias y etiquetas
+
+    for (int i = 0; i &lt; n; ++i) {
+        double dist = calcularDistancia(&amp;puntos[i], nuevo);
+        distancias.push_back(std::make_pair(dist, puntos[i].etiqueta));
+    }
+
+    // Ordenar el vector de distancias
+    std::sort(distancias.begin(), distancias.end());
+
+    // Contar las etiquetas de los k vecinos más cercanos
+    int contador0 = 0, contador1 = 0;
+    for (int i = 0; i &lt; k; ++i) {
+        if (distancias[i].second == 0) {
+            contador0++;
+        } else {
+            contador1++;
+        }
+    }
+
+    // Retornar la clase más común entre los vecinos
+    return (contador0 &gt; contador1) ? 0 : 1;
+}
+
+int main() {
+    int n;
+    std::cout &lt;&lt; &quot;Ingrese el número de puntos de entrenamiento: &quot;;
+    std::cin &gt;&gt; n;
+
+    Punto* puntos = new Punto[n]; // Memoria dinámica para puntos de entrenamiento
+
+    std::cout &lt;&lt; &quot;Ingrese los valores de x, y y la etiqueta (0 o 1) para cada punto:\n&quot;;
+    for (int i = 0; i &lt; n; ++i) {
+        std::cout &lt;&lt; &quot;Punto &quot; &lt;&lt; i + 1 &lt;&lt; &quot;:\n&quot;;
+        std::cout &lt;&lt; &quot;x: &quot;;
+        std::cin &gt;&gt; puntos[i].x;
+        std::cout &lt;&lt; &quot;y: &quot;;
+        std::cin &gt;&gt; puntos[i].y;
+        std::cout &lt;&lt; &quot;etiqueta (0 o 1): &quot;;
+        std::cin &gt;&gt; puntos[i].etiqueta;
+    }
+
+    Punto nuevo;
+    std::cout &lt;&lt; &quot;Ingrese las coordenadas del nuevo punto a clasificar:\n&quot;;
+    std::cout &lt;&lt; &quot;x: &quot;;
+    std::cin &gt;&gt; nuevo.x;
+    std::cout &lt;&lt; &quot;y: &quot;;
+    std::cin &gt;&gt; nuevo.y;
+
+    int k;
+    std::cout &lt;&lt; &quot;Ingrese el valor de k: &quot;;
+    std::cin &gt;&gt; k;
+
+    int etiquetaPredicha = kNN(puntos, n, &amp;nuevo, k);
+    std::cout &lt;&lt; &quot;La clase predicha para el nuevo punto es: &quot; &lt;&lt; etiquetaPredicha &lt;&lt; std::endl;
+
+    delete[] puntos; // Liberar la memoria dinámica
+
+    return 0;
+}
+</div></section><section class="chapter"><h2 id="explicaci-n-del-c-digo" data-toc="explicaci-n-del-c-digo">Explicaci&oacute;n del C&oacute;digo</h2><section class="chapter"><h3 id="1-estructura-punto" data-toc="1-estructura-punto">1. Estructura <code class="code" id="e25et9_26">Punto</code></h3><div class="code-block" data-lang="none">
+struct Punto {
+    double x;
+    double y;
+    int etiqueta; // 0 o 1
+};
+</div><ul class="list _bullet" id="e25et9_25"><li class="list__item" id="e25et9_27"><p><span class="control" id="e25et9_28">Punto</span>: Esta estructura representa un punto en el espacio 2D con una coordenada <code class="code" id="e25et9_29">x</code>, una coordenada <code class="code" id="e25et9_30">y</code>, y una etiqueta que indica la clase del punto (0 o 1).</p></li></ul></section><section class="chapter"><h3 id="2-funci-n-para-calcular-la-distancia-euclidiana" data-toc="2-funci-n-para-calcular-la-distancia-euclidiana">2. Funci&oacute;n para Calcular la Distancia Euclidiana</h3><div class="code-block" data-lang="none">
+double calcularDistancia(const Punto* p1, const Punto* p2) {
+    return std::sqrt(std::pow(p1-&gt;x - p2-&gt;x, 2) + std::pow(p1-&gt;y - p2-&gt;y, 2));
+}
+</div><ul class="list _bullet" id="e25et9_32"><li class="list__item" id="e25et9_33"><p><span class="control" id="e25et9_34">calcularDistancia</span>: Esta funci&oacute;n toma dos apuntadores a <code class="code" id="e25et9_35">Punto</code> y calcula la distancia euclidiana entre ellos.</p></li></ul></section><section class="chapter"><h3 id="3-funci-n-knn-para-clasificaci-n" data-toc="3-funci-n-knn-para-clasificaci-n">3. Funci&oacute;n <code class="code" id="e25et9_39">kNN</code> para Clasificaci&oacute;n</h3><div class="code-block" data-lang="none">
+int kNN(Punto* puntos, int n, Punto* nuevo, int k) {
+    std::vector&lt;std::pair&lt;double, int&gt;&gt; distancias; // Vector para almacenar distancias y etiquetas
+
+    for (int i = 0; i &lt; n; ++i) {
+        double dist = calcularDistancia(&amp;puntos[i], nuevo);
+        distancias.push_back(std::make_pair(dist, puntos[i].etiqueta));
+    }
+
+    // Ordenar el vector de distancias
+    std::sort(distancias.begin(), distancias.end());
+
+    // Contar las etiquetas de los k vecinos más cercanos
+    int contador0 = 0, contador1 = 0;
+    for (int i = 0; i &lt; k; ++i) {
+        if (distancias[i].second == 0) {
+            contador0++;
+        } else {
+            contador1++;
+        }
+    }
+
+    // Retornar la clase más común entre los vecinos
+    return (contador0 &gt; contador1) ? 0 : 1;
+}
+</div><ul class="list _bullet" id="e25et9_38"><li class="list__item" id="e25et9_40"><p><span class="control" id="e25et9_41">kNN</span>: Esta funci&oacute;n implementa el algoritmo k-NN. Toma un arreglo din&aacute;mico de puntos, el n&uacute;mero de puntos, un apuntador al nuevo punto a clasificar, y el valor de <code class="code" id="e25et9_42">k</code>. Calcula las distancias entre el nuevo punto y los puntos de entrenamiento, ordena estas distancias, y determina la clase m&aacute;s com&uacute;n entre los <code class="code" id="e25et9_43">k</code> vecinos m&aacute;s cercanos.</p></li></ul></section><section class="chapter"><h3 id="4-funci-n-principal-main" data-toc="4-funci-n-principal-main">4. Funci&oacute;n Principal <code class="code" id="e25et9_47">main</code></h3><div class="code-block" data-lang="none">
+int main() {
+    int n;
+    std::cout &lt;&lt; &quot;Ingrese el número de puntos de entrenamiento: &quot;;
+    std::cin &gt;&gt; n;
+
+    Punto* puntos = new Punto[n]; // Memoria dinámica para puntos de entrenamiento
+
+    std::cout &lt;&lt; &quot;Ingrese los valores de x, y y la etiqueta (0 o 1) para cada punto:\n&quot;;
+    for (int i = 0; i &lt; n; ++i) {
+        std::cout &lt;&lt; &quot;Punto &quot; &lt;&lt; i + 1 &lt;&lt; &quot;:\n&quot;;
+        std::cout &lt;&lt; &quot;x: &quot;;
+        std::cin &gt;&gt; puntos[i].x;
+        std::cout &lt;&lt; &quot;y: &quot;;
+        std::cin &gt;&gt; puntos[i].y;
+        std::cout &lt;&lt; &quot;etiqueta (0 o 1): &quot;;
+        std::cin &gt;&gt; puntos[i].etiqueta;
+    }
+
+    Punto nuevo;
+    std::cout &lt;&lt; &quot;Ingrese las coordenadas del nuevo punto a clasificar:\n&quot;;
+    std::cout &lt;&lt; &quot;x: &quot;;
+    std::cin &gt;&gt; nuevo.x;
+    std::cout &lt;&lt; &quot;y: &quot;;
+    std::cin &gt;&gt; nuevo.y;
+
+    int k;
+    std::cout &lt;&lt; &quot;Ingrese el valor de k: &quot;;
+    std::cin &gt;&gt; k;
+
+    int etiquetaPredicha = kNN(puntos, n, &amp;nuevo, k);
+    std::cout &lt;&lt; &quot;La clase predicha para el nuevo punto es: &quot; &lt;&lt; etiquetaPredicha &lt;&lt; std::endl;
+
+    delete[] puntos; // Liberar la memoria dinámica
+
+    return 0;
+}
+</div><ul class="list _bullet" id="e25et9_46"><li class="list__item" id="e25et9_48"><p><span class="control" id="e25et9_51">Entrada de Datos</span>: El usuario ingresa los puntos de entrenamiento, incluyendo sus coordenadas y etiquetas, que se almacenan en un arreglo din&aacute;mico de <code class="code" id="e25et9_52">Punto</code>.</p></li><li class="list__item" id="e25et9_49"><p><span class="control" id="e25et9_53">Clasificaci&oacute;n</span>: Se clasifica un nuevo punto usando el algoritmo k-NN, y se muestra la clase predicha.</p></li><li class="list__item" id="e25et9_50"><p><span class="control" id="e25et9_54">Gesti&oacute;n de Memoria</span>: Se usa <code class="code" id="e25et9_55">new</code> para asignar memoria din&aacute;mica para los puntos de entrenamiento y <code class="code" id="e25et9_56">delete[]</code> para liberar esa memoria al final del programa.</p></li></ul></section></section><section class="chapter"><h2 id="conclusi-n" data-toc="conclusi-n">Conclusi&oacute;n</h2><p id="e25et9_57">Este ejercicio demuestra c&oacute;mo se pueden combinar estructuras (<code class="code" id="e25et9_58">structs</code>), arreglos din&aacute;micos, apuntadores y memoria din&aacute;mica en C++ para implementar un algoritmo b&aacute;sico de Machine Learning como k-NN. El uso de estructuras permite organizar los datos de manera clara, mientras que los arreglos y apuntadores proporcionan la flexibilidad necesaria para manejar un n&uacute;mero variable de datos en tiempo de ejecuci&oacute;n. Este tipo de implementaci&oacute;n es un ejemplo pr&aacute;ctico de c&oacute;mo los conceptos b&aacute;sicos de C++ pueden aplicarse en la resoluci&oacute;n de problemas complejos.</p></section><div class="last-modified">Last modified: 19 agosto 2024</div><div data-feedback-placeholder="true"></div><div class="navigation-links _bottom"><a href="arreglos-dinamicos.html" class="navigation-links__prev">Arreglos Din&aacute;micos vs Arreglos Est&aacute;ticos en C++</a><a href="apuntadores-complejos.html" class="navigation-links__next">Ejemplo Avanzado de Apuntadores Complejos en C++</a></div></article><div id="disqus_thread"></div></div></section></main></div><script src="https://resources.jetbrains.com/writerside/apidoc/6.10.0-b408/app.js"></script></body></html>

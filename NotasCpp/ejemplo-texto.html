@@ -1,0 +1,188 @@
+<!DOCTYPE html SYSTEM "about:legacy-compat">
+<html lang="en-US" data-preset="contrast" data-primary-color="#307FFF"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta charset="UTF-8"><meta name="robots" content="noindex"><meta name="built-on" content="2024-08-19T14:46:06.635512031"><title>Ejemplo de Aplicaci&oacute;n para Archivos de Texto en C++ | Instance Name</title><script type="application/json" id="virtual-toc-data">[{"id":"enunciado","level":0,"title":"Enunciado","anchor":"#enunciado"},{"id":"c-digo","level":0,"title":"Código","anchor":"#c-digo"},{"id":"explicaci-n-detallada-del-c-digo","level":0,"title":"Explicación Detallada del Código","anchor":"#explicaci-n-detallada-del-c-digo"},{"id":"conclusi-n","level":0,"title":"Conclusión","anchor":"#conclusi-n"}]</script><script type="application/json" id="topic-shortcuts"></script><link href="https://resources.jetbrains.com/writerside/apidoc/6.10.0-b408/app.css" rel="stylesheet"><meta name="msapplication-TileColor" content="#000000"><link rel="apple-touch-icon" sizes="180x180" href="https://jetbrains.com/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="https://jetbrains.com/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="https://jetbrains.com/favicon-16x16.png"><meta name="msapplication-TileImage" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-144x144.png"><meta name="msapplication-square70x70logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-70x70.png"><meta name="msapplication-square150x150logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-150x150.png"><meta name="msapplication-wide310x150logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-310x150.png"><meta name="msapplication-square310x310logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-310x310.png"><meta name="image" content=""><!-- Open Graph --><meta property="og:title" content="Ejemplo de Aplicaci&oacute;n para Archivos de Texto en C++ | Instance Name"><meta property="og:description" content=""><meta property="og:image" content=""><meta property="og:site_name" content="Instance Name Help"><meta property="og:type" content="website"><meta property="og:locale" content="en_US"><meta property="og:url" content="writerside-documentation/ejemplo-texto.html"><!-- End Open Graph --><!-- Twitter Card --><meta name="twitter:card" content="summary_large_image"><meta name="twitter:site" content=""><meta name="twitter:title" content="Ejemplo de Aplicaci&oacute;n para Archivos de Texto en C++ | Instance Name"><meta name="twitter:description" content=""><meta name="twitter:creator" content=""><meta name="twitter:image:src" content=""><!-- End Twitter Card --><!-- Schema.org WebPage --><script type="application/ld+json">{
+    "@context": "http://schema.org",
+    "@type": "WebPage",
+    "@id": "writerside-documentation/ejemplo-texto.html#webpage",
+    "url": "writerside-documentation/ejemplo-texto.html",
+    "name": "Ejemplo de Aplicaci&oacute;n para Archivos de Texto en C++ | Instance Name",
+    "description": "",
+    "image": "",
+    "inLanguage":"en-US"
+}</script><!-- End Schema.org --><!-- Schema.org WebSite --><script type="application/ld+json">{
+    "@type": "WebSite",
+    "@id": "writerside-documentation/#website",
+    "url": "writerside-documentation/",
+    "name": "Instance Name Help"
+}</script><!-- End Schema.org --></head><body data-id="Ejemplo-Texto" data-main-title="Ejemplo de Aplicación para Archivos de Texto en C++" data-article-props="{&quot;seeAlsoStyle&quot;:&quot;links&quot;}" data-template="article" data-breadcrumbs=""><div class="wrapper"><main class="panel _main"><header class="panel__header"><div class="container"><h3>Instance Name  Help</h3><div class="panel-trigger"></div></div></header><section class="panel__content"><div class="container"><article class="article" data-shortcut-switcher="inactive"><h1 data-toc="Ejemplo-Texto" id="Ejemplo-Texto.md">Ejemplo de Aplicación para Archivos de Texto en C++</h1><section class="chapter"><h2 id="enunciado" data-toc="enunciado">Enunciado</h2><p id="z4pap96_7">Desarrolla un programa en C++ que gestione una lista de tareas. El programa debe permitir al usuario agregar nuevas tareas, mostrar todas las tareas y marcar una tarea como completada. Las tareas se almacenan en un archivo de texto llamado <code class="code" id="z4pap96_8">tareas.txt</code>, donde cada l&iacute;nea representa una tarea. Una tarea completada se marcar&aacute; a&ntilde;adiendo la etiqueta <code class="code" id="z4pap96_9">[COMPLETADA]</code> al final de la l&iacute;nea correspondiente en el archivo.</p></section><section class="chapter"><h2 id="c-digo" data-toc="c-digo">C&oacute;digo</h2><div class="code-block" data-lang="none">
+#include &lt;iostream&gt;
+#include &lt;fstream&gt;
+#include &lt;string&gt;
+#include &lt;vector&gt;
+
+// Función para mostrar todas las tareas
+void mostrarTareas(const std::string&amp; nombreArchivo) {
+    std::ifstream archivo(nombreArchivo);
+    if (!archivo) {
+        std::cerr &lt;&lt; &quot;No se pudo abrir el archivo de tareas para lectura.&quot; &lt;&lt; std::endl;
+        return;
+    }
+
+    std::string tarea;
+    int numeroTarea = 1;
+    while (std::getline(archivo, tarea)) {
+        std::cout &lt;&lt; numeroTarea &lt;&lt; &quot;. &quot; &lt;&lt; tarea &lt;&lt; std::endl;
+        numeroTarea++;
+    }
+
+    archivo.close();
+}
+
+// Función para agregar una nueva tarea
+void agregarTarea(const std::string&amp; nombreArchivo, const std::string&amp; nuevaTarea) {
+    std::ofstream archivo(nombreArchivo, std::ios::app);
+    if (!archivo) {
+        std::cerr &lt;&lt; &quot;No se pudo abrir el archivo de tareas para escritura.&quot; &lt;&lt; std::endl;
+        return;
+    }
+
+    archivo &lt;&lt; nuevaTarea &lt;&lt; std::endl;
+    archivo.close();
+}
+
+// Función para marcar una tarea como completada
+void completarTarea(const std::string&amp; nombreArchivo, int numeroTarea) {
+    std::ifstream archivoEntrada(nombreArchivo);
+    if (!archivoEntrada) {
+        std::cerr &lt;&lt; &quot;No se pudo abrir el archivo de tareas para lectura.&quot; &lt;&lt; std::endl;
+        return;
+    }
+
+    std::ofstream archivoTemporal(&quot;temporal.txt&quot;);
+    std::string tarea;
+    int contador = 1;
+
+    while (std::getline(archivoEntrada, tarea)) {
+        if (contador == numeroTarea) {
+            tarea += &quot; [COMPLETADA]&quot;;
+        }
+        archivoTemporal &lt;&lt; tarea &lt;&lt; std::endl;
+        contador++;
+    }
+
+    archivoEntrada.close();
+    archivoTemporal.close();
+
+    std::remove(nombreArchivo.c_str());
+    std::rename(&quot;temporal.txt&quot;, nombreArchivo.c_str());
+}
+
+int main() {
+    const std::string nombreArchivo = &quot;tareas.txt&quot;;
+    int opcion;
+
+    do {
+        std::cout &lt;&lt; &quot;1. Mostrar tareas\n2. Agregar tarea\n3. Completar tarea\n4. Salir\nElige una opción: &quot;;
+        std::cin &gt;&gt; opcion;
+        std::cin.ignore(); // Ignorar el salto de línea residual
+
+        if (opcion == 1) {
+            mostrarTareas(nombreArchivo);
+        } else if (opcion == 2) {
+            std::string nuevaTarea;
+            std::cout &lt;&lt; &quot;Escribe la nueva tarea: &quot;;
+            std::getline(std::cin, nuevaTarea);
+            agregarTarea(nombreArchivo, nuevaTarea);
+        } else if (opcion == 3) {
+            int numeroTarea;
+            std::cout &lt;&lt; &quot;Número de tarea a completar: &quot;;
+            std::cin &gt;&gt; numeroTarea;
+            completarTarea(nombreArchivo, numeroTarea);
+        }
+
+    } while (opcion != 4);
+
+    return 0;
+}
+</div></section><section class="chapter"><h2 id="explicaci-n-detallada-del-c-digo" data-toc="explicaci-n-detallada-del-c-digo">Explicaci&oacute;n Detallada del C&oacute;digo</h2><section class="chapter"><h3 id="1-funci-n-mostrartareas" data-toc="1-funci-n-mostrartareas">1. Funci&oacute;n <code class="code" id="z4pap96_18">mostrarTareas</code></h3><div class="code-block" data-lang="none">
+void mostrarTareas(const std::string&amp; nombreArchivo) {
+    std::ifstream archivo(nombreArchivo);
+    if (!archivo) {
+        std::cerr &lt;&lt; &quot;No se pudo abrir el archivo de tareas para lectura.&quot; &lt;&lt; std::endl;
+        return;
+    }
+
+    std::string tarea;
+    int numeroTarea = 1;
+    while (std::getline(archivo, tarea)) {
+        std::cout &lt;&lt; numeroTarea &lt;&lt; &quot;. &quot; &lt;&lt; tarea &lt;&lt; std::endl;
+        numeroTarea++;
+    }
+
+    archivo.close();
+}
+</div><ul class="list _bullet" id="z4pap96_17"><li class="list__item" id="z4pap96_19"><p><span class="control" id="z4pap96_21">Prop&oacute;sito</span>: Esta funci&oacute;n lee y muestra todas las tareas almacenadas en el archivo <code class="code" id="z4pap96_22">tareas.txt</code>.</p></li><li class="list__item" id="z4pap96_20"><p><span class="control" id="z4pap96_23">Detalles</span>: </p><ul class="list _bullet" id="z4pap96_24"><li class="list__item" id="z4pap96_25"><p><code class="code" id="z4pap96_29">std::ifstream archivo(nombreArchivo);</code> abre el archivo en modo de solo lectura.</p></li><li class="list__item" id="z4pap96_26"><p><code class="code" id="z4pap96_30">std::getline(archivo, tarea)</code> lee cada l&iacute;nea del archivo, representando cada una como una tarea.</p></li><li class="list__item" id="z4pap96_27"><p>Las tareas se muestran en la consola, numeradas secuencialmente.</p></li><li class="list__item" id="z4pap96_28"><p>El archivo se cierra despu&eacute;s de que todas las tareas se han le&iacute;do.</p></li></ul></li></ul></section><section class="chapter"><h3 id="2-funci-n-agregartarea" data-toc="2-funci-n-agregartarea">2. Funci&oacute;n <code class="code" id="z4pap96_34">agregarTarea</code></h3><div class="code-block" data-lang="none">
+void agregarTarea(const std::string&amp; nombreArchivo, const std::string&amp; nuevaTarea) {
+    std::ofstream archivo(nombreArchivo, std::ios::app);
+    if (!archivo) {
+        std::cerr &lt;&lt; &quot;No se pudo abrir el archivo de tareas para escritura.&quot; &lt;&lt; std::endl;
+        return;
+    }
+
+    archivo &lt;&lt; nuevaTarea &lt;&lt; std::endl;
+    archivo.close();
+}
+</div><ul class="list _bullet" id="z4pap96_33"><li class="list__item" id="z4pap96_35"><p><span class="control" id="z4pap96_37">Prop&oacute;sito</span>: Agregar una nueva tarea al final del archivo <code class="code" id="z4pap96_38">tareas.txt</code>.</p></li><li class="list__item" id="z4pap96_36"><p><span class="control" id="z4pap96_39">Detalles</span>: </p><ul class="list _bullet" id="z4pap96_40"><li class="list__item" id="z4pap96_41"><p><code class="code" id="z4pap96_44">std::ofstream archivo(nombreArchivo, std::ios::app);</code> abre el archivo en modo de adici&oacute;n (<code class="code" id="z4pap96_45">append</code>), permitiendo que las nuevas tareas se a&ntilde;adan al final del archivo sin sobrescribir las existentes.</p></li><li class="list__item" id="z4pap96_42"><p>La tarea proporcionada se escribe en el archivo seguida de un salto de l&iacute;nea (<code class="code" id="z4pap96_46">std::endl</code>).</p></li><li class="list__item" id="z4pap96_43"><p>El archivo se cierra despu&eacute;s de la escritura.</p></li></ul></li></ul></section><section class="chapter"><h3 id="3-funci-n-completartarea" data-toc="3-funci-n-completartarea">3. Funci&oacute;n <code class="code" id="z4pap96_50">completarTarea</code></h3><div class="code-block" data-lang="none">
+void completarTarea(const std::string&amp; nombreArchivo, int numeroTarea) {
+    std::ifstream archivoEntrada(nombreArchivo);
+    if (!archivoEntrada) {
+        std::cerr &lt;&lt; &quot;No se pudo abrir el archivo de tareas para lectura.&quot; &lt;&lt; std::endl;
+        return;
+    }
+
+    std::ofstream archivoTemporal(&quot;temporal.txt&quot;);
+    std::string tarea;
+    int contador = 1;
+
+    while (std::getline(archivoEntrada, tarea)) {
+        if (contador == numeroTarea) {
+            tarea += &quot; [COMPLETADA]&quot;;
+        }
+        archivoTemporal &lt;&lt; tarea &lt;&lt; std::endl;
+        contador++;
+    }
+
+    archivoEntrada.close();
+    archivoTemporal.close();
+
+    std::remove(nombreArchivo.c_str());
+    std::rename(&quot;temporal.txt&quot;, nombreArchivo.c_str());
+}
+</div><ul class="list _bullet" id="z4pap96_49"><li class="list__item" id="z4pap96_51"><p><span class="control" id="z4pap96_53">Prop&oacute;sito</span>: Marcar una tarea espec&iacute;fica como completada, a&ntilde;adiendo la etiqueta <code class="code" id="z4pap96_54">[COMPLETADA]</code> al final de la l&iacute;nea correspondiente.</p></li><li class="list__item" id="z4pap96_52"><p><span class="control" id="z4pap96_55">Detalles</span>: </p><ul class="list _bullet" id="z4pap96_56"><li class="list__item" id="z4pap96_57"><p>Se abre el archivo de tareas para lectura y se crea un archivo temporal <code class="code" id="z4pap96_61">temporal.txt</code> para escribir las modificaciones.</p></li><li class="list__item" id="z4pap96_58"><p>Se itera sobre cada l&iacute;nea del archivo original. Si la l&iacute;nea corresponde al n&uacute;mero de tarea especificado, se le a&ntilde;ade la etiqueta <code class="code" id="z4pap96_62">[COMPLETADA]</code>.</p></li><li class="list__item" id="z4pap96_59"><p>Despu&eacute;s de procesar todas las l&iacute;neas, el archivo original se elimina y el archivo temporal se renombra para reemplazar al original.</p></li><li class="list__item" id="z4pap96_60"><p>Este enfoque asegura que la modificaci&oacute;n de tareas se realice de manera segura, evitando la corrupci&oacute;n de datos en caso de errores durante el proceso.</p></li></ul></li></ul></section><section class="chapter"><h3 id="4-funci-n-main" data-toc="4-funci-n-main">4. Funci&oacute;n <code class="code" id="z4pap96_66">main</code></h3><div class="code-block" data-lang="none">
+int main() {
+    const std::string nombreArchivo = &quot;tareas.txt&quot;;
+    int opcion;
+
+    do {
+        std::cout &lt;&lt; &quot;1. Mostrar tareas\n2. Agregar tarea\n3. Completar tarea\n4. Salir\nElige una opción: &quot;;
+        std::cin &gt;&gt; opcion;
+        std::cin.ignore(); // Ignorar el salto de línea residual
+
+        if (opcion == 1) {
+            mostrarTareas(nombreArchivo);
+        } else if (opcion == 2) {
+            std::string nuevaTarea;
+            std::cout &lt;&lt; &quot;Escribe la nueva tarea: &quot;;
+            std::getline(std::cin, nuevaTarea);
+            agregarTarea(nombreArchivo, nuevaTarea);
+        } else if (opcion == 3) {
+            int numeroTarea;
+            std::cout &lt;&lt; &quot;Número de tarea a completar: &quot;;
+            std::cin &gt;&gt; numeroTarea;
+            completarTarea(nombreArchivo, numeroTarea);
+        }
+
+    } while (opcion != 4);
+
+    return 0;
+}
+</div><ul class="list _bullet" id="z4pap96_65"><li class="list__item" id="z4pap96_67"><p><span class="control" id="z4pap96_69">Prop&oacute;sito</span>: Ofrecer un men&uacute; interactivo al usuario para realizar las operaciones de mostrar, agregar, y completar tareas.</p></li><li class="list__item" id="z4pap96_68"><p><span class="control" id="z4pap96_70">Detalles</span>: </p><ul class="list _bullet" id="z4pap96_71"><li class="list__item" id="z4pap96_72"><p>Un bucle <code class="code" id="z4pap96_75">do-while</code> mantiene el programa en ejecuci&oacute;n hasta que el usuario elige salir.</p></li><li class="list__item" id="z4pap96_73"><p>Dependiendo de la opci&oacute;n seleccionada por el usuario, se llaman las funciones correspondientes (<code class="code" id="z4pap96_76">mostrarTareas</code>, <code class="code" id="z4pap96_77">agregarTarea</code>, <code class="code" id="z4pap96_78">completarTarea</code>).</p></li><li class="list__item" id="z4pap96_74"><p>Se utiliza <code class="code" id="z4pap96_79">std::cin.ignore()</code> para manejar correctamente las entradas de texto despu&eacute;s de seleccionar opciones num&eacute;ricas, asegurando que no se omitan entradas debido a caracteres residuales en el buffer.</p></li></ul></li></ul></section></section><section class="chapter"><h2 id="conclusi-n" data-toc="conclusi-n">Conclusi&oacute;n</h2><p id="z4pap96_80">Este ejemplo muestra c&oacute;mo se puede utilizar C++ para gestionar de manera efectiva un archivo de texto que almacena una lista de tareas. La estructura del programa permite agregar nuevas tareas, mostrar las existentes y marcar tareas como completadas, todo ello gestionando el archivo de texto de forma segura y eficiente. Este tipo de aplicaciones es com&uacute;n en el desarrollo de software que requiere persistencia de datos y manejo de listas o registros.</p></section><div class="last-modified">Last modified: 19 agosto 2024</div><div data-feedback-placeholder="true"></div><div class="navigation-links _bottom"><a href="archivos-de-texto.html" class="navigation-links__prev">Gesti&oacute;n de Archivos de Texto en C++: Desde lo B&aacute;sico hasta lo Avanzado</a></div></article><div id="disqus_thread"></div></div></section></main></div><script src="https://resources.jetbrains.com/writerside/apidoc/6.10.0-b408/app.js"></script></body></html>

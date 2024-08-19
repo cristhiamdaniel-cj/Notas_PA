@@ -1,0 +1,148 @@
+<!DOCTYPE html SYSTEM "about:legacy-compat">
+<html lang="en-US" data-preset="contrast" data-primary-color="#307FFF"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta charset="UTF-8"><meta name="robots" content="noindex"><meta name="built-on" content="2024-08-19T14:46:06.635507612"><title>Ejemplo de Aplicaci&oacute;n: Sistema de Gesti&oacute;n de Empleados con Apuntadores Complejos en C++ | Instance Name</title><script type="application/json" id="virtual-toc-data">[{"id":"explicaci-n-del-c-digo","level":0,"title":"Explicación del Código","anchor":"#explicaci-n-del-c-digo"},{"id":"conclusi-n","level":0,"title":"Conclusión","anchor":"#conclusi-n"}]</script><script type="application/json" id="topic-shortcuts"></script><link href="https://resources.jetbrains.com/writerside/apidoc/6.10.0-b408/app.css" rel="stylesheet"><meta name="msapplication-TileColor" content="#000000"><link rel="apple-touch-icon" sizes="180x180" href="https://jetbrains.com/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="https://jetbrains.com/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="https://jetbrains.com/favicon-16x16.png"><meta name="msapplication-TileImage" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-144x144.png"><meta name="msapplication-square70x70logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-70x70.png"><meta name="msapplication-square150x150logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-150x150.png"><meta name="msapplication-wide310x150logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-310x150.png"><meta name="msapplication-square310x310logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-310x310.png"><meta name="image" content=""><!-- Open Graph --><meta property="og:title" content="Ejemplo de Aplicaci&oacute;n: Sistema de Gesti&oacute;n de Empleados con Apuntadores Complejos en C++ | Instance Name"><meta property="og:description" content=""><meta property="og:image" content=""><meta property="og:site_name" content="Instance Name Help"><meta property="og:type" content="website"><meta property="og:locale" content="en_US"><meta property="og:url" content="writerside-documentation/ejemplo-apuntadores-ii.html"><!-- End Open Graph --><!-- Twitter Card --><meta name="twitter:card" content="summary_large_image"><meta name="twitter:site" content=""><meta name="twitter:title" content="Ejemplo de Aplicaci&oacute;n: Sistema de Gesti&oacute;n de Empleados con Apuntadores Complejos en C++ | Instance Name"><meta name="twitter:description" content=""><meta name="twitter:creator" content=""><meta name="twitter:image:src" content=""><!-- End Twitter Card --><!-- Schema.org WebPage --><script type="application/ld+json">{
+    "@context": "http://schema.org",
+    "@type": "WebPage",
+    "@id": "writerside-documentation/ejemplo-apuntadores-ii.html#webpage",
+    "url": "writerside-documentation/ejemplo-apuntadores-ii.html",
+    "name": "Ejemplo de Aplicaci&oacute;n: Sistema de Gesti&oacute;n de Empleados con Apuntadores Complejos en C++ | Instance Name",
+    "description": "",
+    "image": "",
+    "inLanguage":"en-US"
+}</script><!-- End Schema.org --><!-- Schema.org WebSite --><script type="application/ld+json">{
+    "@type": "WebSite",
+    "@id": "writerside-documentation/#website",
+    "url": "writerside-documentation/",
+    "name": "Instance Name Help"
+}</script><!-- End Schema.org --></head><body data-id="Ejemplo-Apuntadores-II" data-main-title="Ejemplo de Aplicación: Sistema de Gestión de Empleados con Apuntadores Complejos en C++" data-article-props="{&quot;seeAlsoStyle&quot;:&quot;links&quot;}" data-template="article" data-breadcrumbs=""><div class="wrapper"><main class="panel _main"><header class="panel__header"><div class="container"><h3>Instance Name  Help</h3><div class="panel-trigger"></div></div></header><section class="panel__content"><div class="container"><article class="article" data-shortcut-switcher="inactive"><h1 data-toc="Ejemplo-Apuntadores-II" id="Ejemplo-Apuntadores-II.md">Ejemplo de Aplicación: Sistema de Gestión de Empleados con Apuntadores Complejos en C++</h1><p id="-5bgspr_2">Aqu&iacute; te presento un ejemplo de aplicaci&oacute;n en C++ utilizando apuntadores complejos, espec&iacute;ficamente apuntadores a funciones miembro y <code class="code" id="-5bgspr_6">smart pointers</code>. Este ejemplo implementa un sistema b&aacute;sico de gesti&oacute;n de empleados utilizando clases, donde se aplican estos conceptos avanzados.</p><div class="code-block" data-lang="none">
+# Ejemplo de Aplicación: Sistema de Gestión de Empleados con Apuntadores Complejos en C++
+
+## Enunciado del Problema
+
+Se desea implementar un sistema de gestión de empleados donde cada empleado puede tener diferentes roles y responsabilidades. Utilizaremos:
+
+- **Apuntadores a funciones miembro** para invocar métodos específicos de los empleados.
+- **`std::unique_ptr`** y **`std::shared_ptr`** para gestionar la memoria de manera automática y segura.
+- **Polimorfismo** para manejar diferentes tipos de empleados.
+
+El sistema debe ser capaz de agregar empleados, asignarles tareas, y ejecutar dichas tareas de manera flexible utilizando los conceptos avanzados de apuntadores.
+
+## Código Completo
+
+```cpp
+#include &lt;iostream&gt;
+#include &lt;memory&gt;
+#include &lt;vector&gt;
+#include &lt;string&gt;
+
+// Clase base para todos los empleados
+class Empleado {
+public:
+    virtual void realizarTarea() const = 0; // Función virtual pura
+    virtual ~Empleado() {}
+};
+
+// Clase para empleados desarrolladores
+class Desarrollador : public Empleado {
+public:
+    void realizarTarea() const override {
+        std::cout &lt;&lt; &quot;El desarrollador está escribiendo código.&quot; &lt;&lt; std::endl;
+    }
+};
+
+// Clase para empleados de recursos humanos
+class RecursosHumanos : public Empleado {
+public:
+    void realizarTarea() const override {
+        std::cout &lt;&lt; &quot;Recursos Humanos está gestionando el personal.&quot; &lt;&lt; std::endl;
+    }
+};
+
+// Clase para gestionar empleados
+class GestorEmpleados {
+public:
+    void agregarEmpleado(std::shared_ptr&lt;Empleado&gt; empleado) {
+        empleados.push_back(empleado);
+    }
+
+    void asignarTareas() const {
+        for (const auto&amp; empleado : empleados) {
+            empleado-&gt;realizarTarea();
+        }
+    }
+
+private:
+    std::vector&lt;std::shared_ptr&lt;Empleado&gt;&gt; empleados; // Uso de std::shared_ptr
+};
+
+int main() {
+    GestorEmpleados gestor;
+
+    // Creación de empleados usando std::make_shared
+    auto desarrollador = std::make_shared&lt;Desarrollador&gt;();
+    auto recursosHumanos = std::make_shared&lt;RecursosHumanos&gt;();
+
+    // Agregar empleados al gestor
+    gestor.agregarEmpleado(desarrollador);
+    gestor.agregarEmpleado(recursosHumanos);
+
+    // Asignar tareas a todos los empleados
+    gestor.asignarTareas();
+
+    return 0;
+}
+</div><section class="chapter"><h2 id="explicaci-n-del-c-digo" data-toc="explicaci-n-del-c-digo">Explicaci&oacute;n del C&oacute;digo</h2><section class="chapter"><h3 id="1-clase-base-empleado-con-apuntadores-a-funciones-miembro" data-toc="1-clase-base-empleado-con-apuntadores-a-funciones-miembro">1. Clase Base <code class="code" id="-5bgspr_14">Empleado</code> con Apuntadores a Funciones Miembro</h3><div class="code-block" data-lang="none">
+class Empleado {
+public:
+    virtual void realizarTarea() const = 0; // Función virtual pura
+    virtual ~Empleado() {}
+};
+</div><ul class="list _bullet" id="-5bgspr_13"><li class="list__item" id="-5bgspr_15"><p><span class="control" id="-5bgspr_16">Empleado</span>: Esta es la clase base abstracta que define la interfaz com&uacute;n para todos los tipos de empleados. La funci&oacute;n <code class="code" id="-5bgspr_17">realizarTarea</code> es una funci&oacute;n virtual pura que debe ser implementada por las clases derivadas.</p></li></ul></section><section class="chapter"><h3 id="2-clases-derivadas-desarrollador-y-recursoshumanos" data-toc="2-clases-derivadas-desarrollador-y-recursoshumanos">2. Clases Derivadas <code class="code" id="-5bgspr_21">Desarrollador</code> y <code class="code" id="-5bgspr_22">RecursosHumanos</code></h3><div class="code-block" data-lang="none">
+class Desarrollador : public Empleado {
+public:
+    void realizarTarea() const override {
+        std::cout &lt;&lt; &quot;El desarrollador está escribiendo código.&quot; &lt;&lt; std::endl;
+    }
+};
+
+class RecursosHumanos : public Empleado {
+public:
+    void realizarTarea() const override {
+        std::cout &lt;&lt; &quot;Recursos Humanos está gestionando el personal.&quot; &lt;&lt; std::endl;
+    }
+};
+</div><ul class="list _bullet" id="-5bgspr_20"><li class="list__item" id="-5bgspr_23"><p><span class="control" id="-5bgspr_24">Desarrollador</span> y <span class="control" id="-5bgspr_25">RecursosHumanos</span>: Estas clases derivadas implementan la funci&oacute;n <code class="code" id="-5bgspr_26">realizarTarea</code>, que define el comportamiento espec&iacute;fico de cada tipo de empleado.</p></li></ul></section><section class="chapter"><h3 id="3-clase-gestorempleados-con-std-shared-ptr" data-toc="3-clase-gestorempleados-con-std-shared-ptr">3. Clase <code class="code" id="-5bgspr_30">GestorEmpleados</code> con <code class="code" id="-5bgspr_31">std::shared_ptr</code></h3><div class="code-block" data-lang="none">
+class GestorEmpleados {
+public:
+    void agregarEmpleado(std::shared_ptr&lt;Empleado&gt; empleado) {
+        empleados.push_back(empleado);
+    }
+
+    void asignarTareas() const {
+        for (const auto&amp; empleado : empleados) {
+            empleado-&gt;realizarTarea();
+        }
+    }
+
+private:
+    std::vector&lt;std::shared_ptr&lt;Empleado&gt;&gt; empleados; // Uso de std::shared_ptr
+};
+</div><ul class="list _bullet" id="-5bgspr_29"><li class="list__item" id="-5bgspr_32"><p><span class="control" id="-5bgspr_33">GestorEmpleados</span>: Esta clase se encarga de gestionar un conjunto de empleados. Utiliza <code class="code" id="-5bgspr_34">std::shared_ptr</code> para manejar la memoria de los empleados, lo que permite compartir la propiedad de los objetos entre diferentes partes del programa sin preocuparse por la liberaci&oacute;n de memoria.</p></li></ul></section><section class="chapter"><h3 id="4-funci-n-principal-main" data-toc="4-funci-n-principal-main">4. Funci&oacute;n Principal <code class="code" id="-5bgspr_38">main</code></h3><div class="code-block" data-lang="none">
+int main() {
+    GestorEmpleados gestor;
+
+    // Creación de empleados usando std::make_shared
+    auto desarrollador = std::make_shared&lt;Desarrollador&gt;();
+    auto recursosHumanos = std::make_shared&lt;RecursosHumanos&gt;();
+
+    // Agregar empleados al gestor
+    gestor.agregarEmpleado(desarrollador);
+    gestor.agregarEmpleado(recursosHumanos);
+
+    // Asignar tareas a todos los empleados
+    gestor.asignarTareas();
+
+    return 0;
+}
+</div><ul class="list _bullet" id="-5bgspr_37"><li class="list__item" id="-5bgspr_39"><p><span class="control" id="-5bgspr_41">Creaci&oacute;n de Empleados</span>: Se crean objetos <code class="code" id="-5bgspr_42">Desarrollador</code> y <code class="code" id="-5bgspr_43">RecursosHumanos</code> utilizando <code class="code" id="-5bgspr_44">std::make_shared</code>, que es una forma segura y eficiente de crear <code class="code" id="-5bgspr_45">std::shared_ptr</code>.</p></li><li class="list__item" id="-5bgspr_40"><p><span class="control" id="-5bgspr_46">Gesti&oacute;n de Empleados</span>: Los empleados se agregan al <code class="code" id="-5bgspr_47">GestorEmpleados</code> y se les asignan tareas. El uso de <code class="code" id="-5bgspr_48">std::shared_ptr</code> permite que la memoria de los objetos sea liberada autom&aacute;ticamente cuando ya no se necesiten.</p></li></ul></section></section><section class="chapter"><h2 id="conclusi-n" data-toc="conclusi-n">Conclusi&oacute;n</h2><p id="-5bgspr_49">Este ejemplo demuestra el uso avanzado de apuntadores en C++, incluyendo apuntadores a funciones miembro, polimorfismo, y <code class="code" id="-5bgspr_51">smart pointers</code> (<code class="code" id="-5bgspr_52">std::shared_ptr</code>). Estos conceptos permiten construir aplicaciones robustas, donde la gesti&oacute;n de memoria es autom&aacute;tica y segura, y el c&oacute;digo es flexible y f&aacute;cil de mantener. Este nivel de complejidad es adecuado para aplicaciones empresariales o sistemas que requieren una gesti&oacute;n precisa de los recursos.</p><div class="code-block" data-lang="none">
+
+Este archivo `.md` presenta un ejemplo de aplicación avanzada que utiliza apuntadores complejos en C++, integrando conceptos como apuntadores a funciones miembro, `smart pointers`, y polimorfismo para gestionar un sistema de empleados. Este enfoque demuestra cómo estos conceptos pueden utilizarse para crear sistemas flexibles, seguros y eficientes en C++. Si necesitas más ejemplos o detalles adicionales, estaré encantado de ayudarte.</div></section><div class="last-modified">Last modified: 19 agosto 2024</div><div data-feedback-placeholder="true"></div><div class="navigation-links _bottom"><a href="apuntadores-complejos.html" class="navigation-links__prev">Ejemplo Avanzado de Apuntadores Complejos en C++</a><a href="cadena-caracteres.html" class="navigation-links__next">Cadenas de Caracteres en C++: Desde lo B&aacute;sico hasta el Uso Avanzado de Apuntadores Din&aacute;micos</a></div></article><div id="disqus_thread"></div></div></section></main></div><script src="https://resources.jetbrains.com/writerside/apidoc/6.10.0-b408/app.js"></script></body></html>
