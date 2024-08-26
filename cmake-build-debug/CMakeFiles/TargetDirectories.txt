@@ -1,0 +1,3 @@
+/home/usuario/CLionProjects/PUJ-Parciales/cmake-build-debug/CMakeFiles/PUJ_Parciales.dir
+/home/usuario/CLionProjects/PUJ-Parciales/cmake-build-debug/CMakeFiles/edit_cache.dir
+/home/usuario/CLionProjects/PUJ-Parciales/cmake-build-debug/CMakeFiles/rebuild_cache.dir

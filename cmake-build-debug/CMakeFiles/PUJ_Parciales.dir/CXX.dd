@@ -1,0 +1,7 @@
+ninja_dyndep_version = 1.0
+build CMakeFiles/PUJ_Parciales.dir/Palindromos/con_restricciones.cpp.o: dyndep
+
+build CMakeFiles/PUJ_Parciales.dir/Palindromos/sin_restricciones.cpp.o: dyndep
+
+build CMakeFiles/PUJ_Parciales.dir/Palindromos/main.cpp.o: dyndep
+

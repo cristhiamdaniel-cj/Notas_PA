@@ -1,0 +1,21 @@
+# ninja log v6
+171	804	1724708943671456959	CMakeFiles/PUJ_Parciales.dir/Palindromos/main.cpp.o	5b44f4bc7767f881
+171	889	1724708943671456959	CMakeFiles/PUJ_Parciales.dir/Palindromos/sin_restricciones.cpp.o	770eb6a9def30b7e
+0	136	1724708943501456001	CMakeFiles/PUJ_Parciales.dir/main.cpp.o.ddi	f09081c559aa9d6c
+164	171	1724708943671456959	CMakeFiles/PUJ_Parciales.dir/main.cpp.o.modmap	dd86007660d536
+164	171	1724708943671456959	CMakeFiles/PUJ_Parciales.dir/Palindromos/main.cpp.o.modmap	dd86007660d536
+1	156	1724708943501456001	CMakeFiles/PUJ_Parciales.dir/Palindromos/sin_restricciones.cpp.o.ddi	7a5c6d0c5cf30407
+1	142	1724708943501456001	CMakeFiles/PUJ_Parciales.dir/Palindromos/con_restricciones.cpp.o.ddi	9ebb9caeac20fcc4
+1	164	1724708943501456001	CMakeFiles/PUJ_Parciales.dir/Palindromos/main.cpp.o.ddi	8ea50d663ac13c53
+164	171	1724708943671456959	/home/usuario/CLionProjects/PUJ-Parciales/cmake-build-debug/CMakeFiles/PUJ_Parciales.dir/CXXModules.json	dd86007660d536
+171	847	1724708943671456959	CMakeFiles/PUJ_Parciales.dir/Palindromos/con_restricciones.cpp.o	942d6553ecb0da18
+164	171	1724708943671456959	CMakeFiles/PUJ_Parciales.dir/Palindromos/sin_restricciones.cpp.o.modmap	dd86007660d536
+164	171	1724708943671456959	CMakeFiles/PUJ_Parciales.dir/CXX.dd	dd86007660d536
+164	171	1724708943671456959	CMakeFiles/PUJ_Parciales.dir/Palindromos/con_restricciones.cpp.o.modmap	dd86007660d536
+171	889	1724708943671456959	CMakeFiles/PUJ_Parciales.dir/main.cpp.o	24c430a0f050b20
+2	7	1724708962921565662	CMakeFiles/PUJ_Parciales.dir/CXX.dd	dc4ac2d44298a9e9
+2	7	1724708962921565662	/home/usuario/CLionProjects/PUJ-Parciales/cmake-build-debug/CMakeFiles/PUJ_Parciales.dir/CXXModules.json	dc4ac2d44298a9e9
+2	7	1724708962921565662	CMakeFiles/PUJ_Parciales.dir/Palindromos/con_restricciones.cpp.o.modmap	dc4ac2d44298a9e9
+2	7	1724708962921565662	CMakeFiles/PUJ_Parciales.dir/Palindromos/sin_restricciones.cpp.o.modmap	dc4ac2d44298a9e9
+2	7	1724708962921565662	CMakeFiles/PUJ_Parciales.dir/Palindromos/main.cpp.o.modmap	dc4ac2d44298a9e9
+7	107	1724708962928232366	PUJ_Parciales	f0bce835ca9d3b1f
