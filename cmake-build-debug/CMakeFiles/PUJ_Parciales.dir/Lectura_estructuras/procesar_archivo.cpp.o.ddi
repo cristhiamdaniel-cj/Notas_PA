@@ -1,0 +1,11 @@
+{
+"rules": [
+{
+"primary-output": "CMakeFiles/PUJ_Parciales.dir/Lectura_estructuras/procesar_archivo.cpp.o",
+"requires": [
+]
+}
+],
+"version": 0,
+"revision": 0
+}

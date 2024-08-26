@@ -15,8 +15,12 @@ add_executable(PUJ_Parciales
 #        Busqueda_Productos/sin_restricciones.cpp
 #        Busqueda_Productos/main.cpp
 #        Busqueda_Productos/crear_binario.cpp
-        Funcion_Encriptacion/main.cpp
-        Funcion_Encriptacion/encriptacion_con_restricciones.h
-        Funcion_Encriptacion/encriptacion_con_restricciones.cpp
-        Funcion_Encriptacion/encriptacion_sin_restricciones.h
-        Funcion_Encriptacion/encriptacion_sin_restricciones.cpp)
+#        Funcion_Encriptacion/main.cpp
+#        Funcion_Encriptacion/encriptacion_con_restricciones.h
+#        Funcion_Encriptacion/encriptacion_con_restricciones.cpp
+#        Funcion_Encriptacion/encriptacion_sin_restricciones.h
+#        Funcion_Encriptacion/encriptacion_sin_restricciones.cpp
+        Lectura_estructuras/lectura_archivos.h
+        Lectura_estructuras/crear_binario.cpp
+        Lectura_estructuras/procesar_archivo.cpp
+        Lectura_estructuras/main.cpp)
