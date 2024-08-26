@@ -1,7 +1,9 @@
 ninja_dyndep_version = 1.0
-build CMakeFiles/PUJ_Parciales.dir/Palindromos/con_restricciones.cpp.o: dyndep
+build CMakeFiles/PUJ_Parciales.dir/Busqueda_Productos/con_restricciones.cpp.o: dyndep
 
-build CMakeFiles/PUJ_Parciales.dir/Palindromos/sin_restricciones.cpp.o: dyndep
+build CMakeFiles/PUJ_Parciales.dir/Busqueda_Productos/sin_restricciones.cpp.o: dyndep
 
-build CMakeFiles/PUJ_Parciales.dir/Palindromos/main.cpp.o: dyndep
+build CMakeFiles/PUJ_Parciales.dir/Busqueda_Productos/main.cpp.o: dyndep
+
+build CMakeFiles/PUJ_Parciales.dir/Busqueda_Productos/crear_binario.cpp.o: dyndep
 
