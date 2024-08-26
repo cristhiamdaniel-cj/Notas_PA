@@ -20,7 +20,12 @@ add_executable(PUJ_Parciales
 #        Funcion_Encriptacion/encriptacion_con_restricciones.cpp
 #        Funcion_Encriptacion/encriptacion_sin_restricciones.h
 #        Funcion_Encriptacion/encriptacion_sin_restricciones.cpp
-        Lectura_estructuras/lectura_archivos.h
-        Lectura_estructuras/crear_binario.cpp
-        Lectura_estructuras/procesar_archivo.cpp
-        Lectura_estructuras/main.cpp)
+#        Lectura_estructuras/lectura_archivos.h
+#        Lectura_estructuras/crear_binario.cpp
+#        Lectura_estructuras/procesar_archivo.cpp
+#        Lectura_estructuras/main.cpp
+        Mensajes/contactos_sin_restricciones.h
+        Mensajes/contactos_sin_restricciones.cpp
+        Mensajes/contactos_con_restricciones.h
+        Mensajes/contactos_con_restricciones.cpp
+        Mensajes/main.cpp)

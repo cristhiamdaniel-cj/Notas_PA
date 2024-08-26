@@ -1,7 +1,7 @@
 ninja_dyndep_version = 1.0
-build CMakeFiles/PUJ_Parciales.dir/Lectura_estructuras/crear_binario.cpp.o: dyndep
+build CMakeFiles/PUJ_Parciales.dir/Mensajes/contactos_sin_restricciones.cpp.o: dyndep
 
-build CMakeFiles/PUJ_Parciales.dir/Lectura_estructuras/procesar_archivo.cpp.o: dyndep
+build CMakeFiles/PUJ_Parciales.dir/Mensajes/contactos_con_restricciones.cpp.o: dyndep
 
-build CMakeFiles/PUJ_Parciales.dir/Lectura_estructuras/main.cpp.o: dyndep
+build CMakeFiles/PUJ_Parciales.dir/Mensajes/main.cpp.o: dyndep
 
