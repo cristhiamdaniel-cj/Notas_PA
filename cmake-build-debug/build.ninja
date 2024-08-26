@@ -49,67 +49,52 @@ cmake_ninja_workdir = /home/usuario/CLionProjects/PUJ-Parciales/cmake-build-debu
 
 build cmake_object_order_depends_target_PUJ_Parciales: phony || .
 
-build CMakeFiles/PUJ_Parciales.dir/Busqueda_Productos/con_restricciones.cpp.o.ddi: CXX_SCAN__PUJ_Parciales_Debug /home/usuario/CLionProjects/PUJ-Parciales/Busqueda_Productos/con_restricciones.cpp || cmake_object_order_depends_target_PUJ_Parciales
-  DEP_FILE = CMakeFiles/PUJ_Parciales.dir/Busqueda_Productos/con_restricciones.cpp.o.ddi.d
-  DYNDEP_INTERMEDIATE_FILE = CMakeFiles/PUJ_Parciales.dir/Busqueda_Productos/con_restricciones.cpp.o.ddi
+build CMakeFiles/PUJ_Parciales.dir/Funcion_Encriptacion/main.cpp.o.ddi: CXX_SCAN__PUJ_Parciales_Debug /home/usuario/CLionProjects/PUJ-Parciales/Funcion_Encriptacion/main.cpp || cmake_object_order_depends_target_PUJ_Parciales
+  DEP_FILE = CMakeFiles/PUJ_Parciales.dir/Funcion_Encriptacion/main.cpp.o.ddi.d
+  DYNDEP_INTERMEDIATE_FILE = CMakeFiles/PUJ_Parciales.dir/Funcion_Encriptacion/main.cpp.o.ddi
   FLAGS = -g -std=gnu++20 -fdiagnostics-color=always
-  OBJ_FILE = CMakeFiles/PUJ_Parciales.dir/Busqueda_Productos/con_restricciones.cpp.o
-  PREPROCESSED_OUTPUT_FILE = CMakeFiles/PUJ_Parciales.dir/Busqueda_Productos/con_restricciones.cpp.o.ddi.i
+  OBJ_FILE = CMakeFiles/PUJ_Parciales.dir/Funcion_Encriptacion/main.cpp.o
+  PREPROCESSED_OUTPUT_FILE = CMakeFiles/PUJ_Parciales.dir/Funcion_Encriptacion/main.cpp.o.ddi.i
 
-build CMakeFiles/PUJ_Parciales.dir/Busqueda_Productos/con_restricciones.cpp.o: CXX_COMPILER__PUJ_Parciales_scanned_Debug /home/usuario/CLionProjects/PUJ-Parciales/Busqueda_Productos/con_restricciones.cpp | CMakeFiles/PUJ_Parciales.dir/Busqueda_Productos/con_restricciones.cpp.o.modmap || cmake_object_order_depends_target_PUJ_Parciales CMakeFiles/PUJ_Parciales.dir/CXX.dd
-  DEP_FILE = CMakeFiles/PUJ_Parciales.dir/Busqueda_Productos/con_restricciones.cpp.o.d
-  DYNDEP_MODULE_MAP_FILE = CMakeFiles/PUJ_Parciales.dir/Busqueda_Productos/con_restricciones.cpp.o.modmap
-  FLAGS = -g -std=gnu++20 -fdiagnostics-color=always
-  OBJECT_DIR = CMakeFiles/PUJ_Parciales.dir
-  OBJECT_FILE_DIR = CMakeFiles/PUJ_Parciales.dir/Busqueda_Productos
-  dyndep = CMakeFiles/PUJ_Parciales.dir/CXX.dd
-
-build CMakeFiles/PUJ_Parciales.dir/Busqueda_Productos/sin_restricciones.cpp.o.ddi: CXX_SCAN__PUJ_Parciales_Debug /home/usuario/CLionProjects/PUJ-Parciales/Busqueda_Productos/sin_restricciones.cpp || cmake_object_order_depends_target_PUJ_Parciales
-  DEP_FILE = CMakeFiles/PUJ_Parciales.dir/Busqueda_Productos/sin_restricciones.cpp.o.ddi.d
-  DYNDEP_INTERMEDIATE_FILE = CMakeFiles/PUJ_Parciales.dir/Busqueda_Productos/sin_restricciones.cpp.o.ddi
-  FLAGS = -g -std=gnu++20 -fdiagnostics-color=always
-  OBJ_FILE = CMakeFiles/PUJ_Parciales.dir/Busqueda_Productos/sin_restricciones.cpp.o
-  PREPROCESSED_OUTPUT_FILE = CMakeFiles/PUJ_Parciales.dir/Busqueda_Productos/sin_restricciones.cpp.o.ddi.i
-
-build CMakeFiles/PUJ_Parciales.dir/Busqueda_Productos/sin_restricciones.cpp.o: CXX_COMPILER__PUJ_Parciales_scanned_Debug /home/usuario/CLionProjects/PUJ-Parciales/Busqueda_Productos/sin_restricciones.cpp | CMakeFiles/PUJ_Parciales.dir/Busqueda_Productos/sin_restricciones.cpp.o.modmap || cmake_object_order_depends_target_PUJ_Parciales CMakeFiles/PUJ_Parciales.dir/CXX.dd
-  DEP_FILE = CMakeFiles/PUJ_Parciales.dir/Busqueda_Productos/sin_restricciones.cpp.o.d
-  DYNDEP_MODULE_MAP_FILE = CMakeFiles/PUJ_Parciales.dir/Busqueda_Productos/sin_restricciones.cpp.o.modmap
+build CMakeFiles/PUJ_Parciales.dir/Funcion_Encriptacion/main.cpp.o: CXX_COMPILER__PUJ_Parciales_scanned_Debug /home/usuario/CLionProjects/PUJ-Parciales/Funcion_Encriptacion/main.cpp | CMakeFiles/PUJ_Parciales.dir/Funcion_Encriptacion/main.cpp.o.modmap || cmake_object_order_depends_target_PUJ_Parciales CMakeFiles/PUJ_Parciales.dir/CXX.dd
+  DEP_FILE = CMakeFiles/PUJ_Parciales.dir/Funcion_Encriptacion/main.cpp.o.d
+  DYNDEP_MODULE_MAP_FILE = CMakeFiles/PUJ_Parciales.dir/Funcion_Encriptacion/main.cpp.o.modmap
   FLAGS = -g -std=gnu++20 -fdiagnostics-color=always
   OBJECT_DIR = CMakeFiles/PUJ_Parciales.dir
-  OBJECT_FILE_DIR = CMakeFiles/PUJ_Parciales.dir/Busqueda_Productos
+  OBJECT_FILE_DIR = CMakeFiles/PUJ_Parciales.dir/Funcion_Encriptacion
   dyndep = CMakeFiles/PUJ_Parciales.dir/CXX.dd
 
-build CMakeFiles/PUJ_Parciales.dir/Busqueda_Productos/main.cpp.o.ddi: CXX_SCAN__PUJ_Parciales_Debug /home/usuario/CLionProjects/PUJ-Parciales/Busqueda_Productos/main.cpp || cmake_object_order_depends_target_PUJ_Parciales
-  DEP_FILE = CMakeFiles/PUJ_Parciales.dir/Busqueda_Productos/main.cpp.o.ddi.d
-  DYNDEP_INTERMEDIATE_FILE = CMakeFiles/PUJ_Parciales.dir/Busqueda_Productos/main.cpp.o.ddi
+build CMakeFiles/PUJ_Parciales.dir/Funcion_Encriptacion/encriptacion_con_restricciones.cpp.o.ddi: CXX_SCAN__PUJ_Parciales_Debug /home/usuario/CLionProjects/PUJ-Parciales/Funcion_Encriptacion/encriptacion_con_restricciones.cpp || cmake_object_order_depends_target_PUJ_Parciales
+  DEP_FILE = CMakeFiles/PUJ_Parciales.dir/Funcion_Encriptacion/encriptacion_con_restricciones.cpp.o.ddi.d
+  DYNDEP_INTERMEDIATE_FILE = CMakeFiles/PUJ_Parciales.dir/Funcion_Encriptacion/encriptacion_con_restricciones.cpp.o.ddi
   FLAGS = -g -std=gnu++20 -fdiagnostics-color=always
-  OBJ_FILE = CMakeFiles/PUJ_Parciales.dir/Busqueda_Productos/main.cpp.o
-  PREPROCESSED_OUTPUT_FILE = CMakeFiles/PUJ_Parciales.dir/Busqueda_Productos/main.cpp.o.ddi.i
+  OBJ_FILE = CMakeFiles/PUJ_Parciales.dir/Funcion_Encriptacion/encriptacion_con_restricciones.cpp.o
+  PREPROCESSED_OUTPUT_FILE = CMakeFiles/PUJ_Parciales.dir/Funcion_Encriptacion/encriptacion_con_restricciones.cpp.o.ddi.i
 
-build CMakeFiles/PUJ_Parciales.dir/Busqueda_Productos/main.cpp.o: CXX_COMPILER__PUJ_Parciales_scanned_Debug /home/usuario/CLionProjects/PUJ-Parciales/Busqueda_Productos/main.cpp | CMakeFiles/PUJ_Parciales.dir/Busqueda_Productos/main.cpp.o.modmap || cmake_object_order_depends_target_PUJ_Parciales CMakeFiles/PUJ_Parciales.dir/CXX.dd
-  DEP_FILE = CMakeFiles/PUJ_Parciales.dir/Busqueda_Productos/main.cpp.o.d
-  DYNDEP_MODULE_MAP_FILE = CMakeFiles/PUJ_Parciales.dir/Busqueda_Productos/main.cpp.o.modmap
+build CMakeFiles/PUJ_Parciales.dir/Funcion_Encriptacion/encriptacion_con_restricciones.cpp.o: CXX_COMPILER__PUJ_Parciales_scanned_Debug /home/usuario/CLionProjects/PUJ-Parciales/Funcion_Encriptacion/encriptacion_con_restricciones.cpp | CMakeFiles/PUJ_Parciales.dir/Funcion_Encriptacion/encriptacion_con_restricciones.cpp.o.modmap || cmake_object_order_depends_target_PUJ_Parciales CMakeFiles/PUJ_Parciales.dir/CXX.dd
+  DEP_FILE = CMakeFiles/PUJ_Parciales.dir/Funcion_Encriptacion/encriptacion_con_restricciones.cpp.o.d
+  DYNDEP_MODULE_MAP_FILE = CMakeFiles/PUJ_Parciales.dir/Funcion_Encriptacion/encriptacion_con_restricciones.cpp.o.modmap
   FLAGS = -g -std=gnu++20 -fdiagnostics-color=always
   OBJECT_DIR = CMakeFiles/PUJ_Parciales.dir
-  OBJECT_FILE_DIR = CMakeFiles/PUJ_Parciales.dir/Busqueda_Productos
+  OBJECT_FILE_DIR = CMakeFiles/PUJ_Parciales.dir/Funcion_Encriptacion
   dyndep = CMakeFiles/PUJ_Parciales.dir/CXX.dd
 
-build CMakeFiles/PUJ_Parciales.dir/Busqueda_Productos/crear_binario.cpp.o.ddi: CXX_SCAN__PUJ_Parciales_Debug /home/usuario/CLionProjects/PUJ-Parciales/Busqueda_Productos/crear_binario.cpp || cmake_object_order_depends_target_PUJ_Parciales
-  DEP_FILE = CMakeFiles/PUJ_Parciales.dir/Busqueda_Productos/crear_binario.cpp.o.ddi.d
-  DYNDEP_INTERMEDIATE_FILE = CMakeFiles/PUJ_Parciales.dir/Busqueda_Productos/crear_binario.cpp.o.ddi
+build CMakeFiles/PUJ_Parciales.dir/Funcion_Encriptacion/encriptacion_sin_restricciones.cpp.o.ddi: CXX_SCAN__PUJ_Parciales_Debug /home/usuario/CLionProjects/PUJ-Parciales/Funcion_Encriptacion/encriptacion_sin_restricciones.cpp || cmake_object_order_depends_target_PUJ_Parciales
+  DEP_FILE = CMakeFiles/PUJ_Parciales.dir/Funcion_Encriptacion/encriptacion_sin_restricciones.cpp.o.ddi.d
+  DYNDEP_INTERMEDIATE_FILE = CMakeFiles/PUJ_Parciales.dir/Funcion_Encriptacion/encriptacion_sin_restricciones.cpp.o.ddi
   FLAGS = -g -std=gnu++20 -fdiagnostics-color=always
-  OBJ_FILE = CMakeFiles/PUJ_Parciales.dir/Busqueda_Productos/crear_binario.cpp.o
-  PREPROCESSED_OUTPUT_FILE = CMakeFiles/PUJ_Parciales.dir/Busqueda_Productos/crear_binario.cpp.o.ddi.i
+  OBJ_FILE = CMakeFiles/PUJ_Parciales.dir/Funcion_Encriptacion/encriptacion_sin_restricciones.cpp.o
+  PREPROCESSED_OUTPUT_FILE = CMakeFiles/PUJ_Parciales.dir/Funcion_Encriptacion/encriptacion_sin_restricciones.cpp.o.ddi.i
 
-build CMakeFiles/PUJ_Parciales.dir/Busqueda_Productos/crear_binario.cpp.o: CXX_COMPILER__PUJ_Parciales_scanned_Debug /home/usuario/CLionProjects/PUJ-Parciales/Busqueda_Productos/crear_binario.cpp | CMakeFiles/PUJ_Parciales.dir/Busqueda_Productos/crear_binario.cpp.o.modmap || cmake_object_order_depends_target_PUJ_Parciales CMakeFiles/PUJ_Parciales.dir/CXX.dd
-  DEP_FILE = CMakeFiles/PUJ_Parciales.dir/Busqueda_Productos/crear_binario.cpp.o.d
-  DYNDEP_MODULE_MAP_FILE = CMakeFiles/PUJ_Parciales.dir/Busqueda_Productos/crear_binario.cpp.o.modmap
+build CMakeFiles/PUJ_Parciales.dir/Funcion_Encriptacion/encriptacion_sin_restricciones.cpp.o: CXX_COMPILER__PUJ_Parciales_scanned_Debug /home/usuario/CLionProjects/PUJ-Parciales/Funcion_Encriptacion/encriptacion_sin_restricciones.cpp | CMakeFiles/PUJ_Parciales.dir/Funcion_Encriptacion/encriptacion_sin_restricciones.cpp.o.modmap || cmake_object_order_depends_target_PUJ_Parciales CMakeFiles/PUJ_Parciales.dir/CXX.dd
+  DEP_FILE = CMakeFiles/PUJ_Parciales.dir/Funcion_Encriptacion/encriptacion_sin_restricciones.cpp.o.d
+  DYNDEP_MODULE_MAP_FILE = CMakeFiles/PUJ_Parciales.dir/Funcion_Encriptacion/encriptacion_sin_restricciones.cpp.o.modmap
   FLAGS = -g -std=gnu++20 -fdiagnostics-color=always
   OBJECT_DIR = CMakeFiles/PUJ_Parciales.dir
-  OBJECT_FILE_DIR = CMakeFiles/PUJ_Parciales.dir/Busqueda_Productos
+  OBJECT_FILE_DIR = CMakeFiles/PUJ_Parciales.dir/Funcion_Encriptacion
   dyndep = CMakeFiles/PUJ_Parciales.dir/CXX.dd
 
-build CMakeFiles/PUJ_Parciales.dir/CXX.dd | /home/usuario/CLionProjects/PUJ-Parciales/cmake-build-debug/CMakeFiles/PUJ_Parciales.dir/CXXModules.json CMakeFiles/PUJ_Parciales.dir/Busqueda_Productos/con_restricciones.cpp.o.modmap CMakeFiles/PUJ_Parciales.dir/Busqueda_Productos/sin_restricciones.cpp.o.modmap CMakeFiles/PUJ_Parciales.dir/Busqueda_Productos/main.cpp.o.modmap CMakeFiles/PUJ_Parciales.dir/Busqueda_Productos/crear_binario.cpp.o.modmap: CXX_DYNDEP__PUJ_Parciales_Debug CMakeFiles/PUJ_Parciales.dir/Busqueda_Productos/con_restricciones.cpp.o.ddi CMakeFiles/PUJ_Parciales.dir/Busqueda_Productos/sin_restricciones.cpp.o.ddi CMakeFiles/PUJ_Parciales.dir/Busqueda_Productos/main.cpp.o.ddi CMakeFiles/PUJ_Parciales.dir/Busqueda_Productos/crear_binario.cpp.o.ddi | /home/usuario/CLionProjects/PUJ-Parciales/cmake-build-debug/CMakeFiles/PUJ_Parciales.dir/CXXDependInfo.json
+build CMakeFiles/PUJ_Parciales.dir/CXX.dd | /home/usuario/CLionProjects/PUJ-Parciales/cmake-build-debug/CMakeFiles/PUJ_Parciales.dir/CXXModules.json CMakeFiles/PUJ_Parciales.dir/Funcion_Encriptacion/main.cpp.o.modmap CMakeFiles/PUJ_Parciales.dir/Funcion_Encriptacion/encriptacion_con_restricciones.cpp.o.modmap CMakeFiles/PUJ_Parciales.dir/Funcion_Encriptacion/encriptacion_sin_restricciones.cpp.o.modmap: CXX_DYNDEP__PUJ_Parciales_Debug CMakeFiles/PUJ_Parciales.dir/Funcion_Encriptacion/main.cpp.o.ddi CMakeFiles/PUJ_Parciales.dir/Funcion_Encriptacion/encriptacion_con_restricciones.cpp.o.ddi CMakeFiles/PUJ_Parciales.dir/Funcion_Encriptacion/encriptacion_sin_restricciones.cpp.o.ddi | /home/usuario/CLionProjects/PUJ-Parciales/cmake-build-debug/CMakeFiles/PUJ_Parciales.dir/CXXDependInfo.json
 
 
 # =============================================================================
@@ -119,7 +104,7 @@ build CMakeFiles/PUJ_Parciales.dir/CXX.dd | /home/usuario/CLionProjects/PUJ-Parc
 #############################################
 # Link the executable PUJ_Parciales
 
-build PUJ_Parciales: CXX_EXECUTABLE_LINKER__PUJ_Parciales_Debug CMakeFiles/PUJ_Parciales.dir/Busqueda_Productos/con_restricciones.cpp.o CMakeFiles/PUJ_Parciales.dir/Busqueda_Productos/sin_restricciones.cpp.o CMakeFiles/PUJ_Parciales.dir/Busqueda_Productos/main.cpp.o CMakeFiles/PUJ_Parciales.dir/Busqueda_Productos/crear_binario.cpp.o
+build PUJ_Parciales: CXX_EXECUTABLE_LINKER__PUJ_Parciales_Debug CMakeFiles/PUJ_Parciales.dir/Funcion_Encriptacion/main.cpp.o CMakeFiles/PUJ_Parciales.dir/Funcion_Encriptacion/encriptacion_con_restricciones.cpp.o CMakeFiles/PUJ_Parciales.dir/Funcion_Encriptacion/encriptacion_sin_restricciones.cpp.o
   FLAGS = -g
   OBJECT_DIR = CMakeFiles/PUJ_Parciales.dir
   POST_BUILD = :
