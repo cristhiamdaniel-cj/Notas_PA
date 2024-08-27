@@ -1,7 +1,9 @@
 ninja_dyndep_version = 1.0
-build CMakeFiles/PUJ_Parciales.dir/Mensajes/contactos_sin_restricciones.cpp.o: dyndep
+build CMakeFiles/PUJ_Parciales.dir/Tension_arterial/tension_arterial_con_restricciones.cpp.o: dyndep
 
-build CMakeFiles/PUJ_Parciales.dir/Mensajes/contactos_con_restricciones.cpp.o: dyndep
+build CMakeFiles/PUJ_Parciales.dir/Tension_arterial/tension_arterial_sin_restricciones.cpp.o: dyndep
 
-build CMakeFiles/PUJ_Parciales.dir/Mensajes/main.cpp.o: dyndep
+build CMakeFiles/PUJ_Parciales.dir/Tension_arterial/main.cpp.o: dyndep
+
+build CMakeFiles/PUJ_Parciales.dir/Tension_arterial/crear_archivo.cpp.o: dyndep
 
